@@ -59,17 +59,56 @@
             z-index: 10; /* 画像が他のコンテンツの上に表示されるようにする */        
         }
 
+        /* 近畿の地図　*/
+        .kinki-image{
+            position: absolute;
+            top: 338.8px;
+            left: 404.2px;
+            width: 7.3%; /* 画像のサイズ調整 */
+            z-index: 10; /* 画像が他のコンテンツの上に表示されるようにする */        
+        }
+
+        /* 中国の地図　*/
+        .tyugoku-image{
+            position: absolute;
+            top: 308.8px;
+            left: 316px;
+            width: 9.6%; /* 画像のサイズ調整 */
+            z-index: 10; /* 画像が他のコンテンツの上に表示されるようにする */        
+        }
+
+        /* 四国の地図　*/
+        .shikoku-image{
+            position: absolute;
+            top: 371.6px;
+            left: 351.4px;
+            width: 6.6%; /* 画像のサイズ調整 */
+            z-index: 10; /* 画像が他のコンテンツの上に表示されるようにする */        
+        }
+
+        /* 九州の地図　*/
+        .kyusyu-image{
+            position: absolute;
+            top: 363.9px;
+            left: 226.1px;
+            width: 14.4%; /* 画像のサイズ調整 */
+            z-index: 10; /* 画像が他のコンテンツの上に表示されるようにする */        
+        }
+
 
     </style>
 </head>
 <body>
     <h1 style="text-align: center;">日本地図</h1>
-    <div class="map-container">
-        <img src="{% static 'mypage/japan_map.png' %}" alt="日本地図" class="japan-image">
+    <div class="map-container">        
         <img src="{% static 'mypage/hokkaido_map.png' %}" alt="北海道" class="hokkaido-image">
-        <img src="{% static 'mypage/touhoku_map.png' %}" alt="#東北" class="touhoku-image">
-        <img src="{% static 'mypage/kanto_map.png' %}" alt="#関東" class="kanto-image">
-        <img src="{% static 'mypage/tyubu_map.png' %}" alt="#中部" class="tyubu-image">
+        <img src="{% static 'mypage/touhoku_map.png' %}" alt="東北" class="touhoku-image">
+        <img src="{% static 'mypage/kanto_map.png' %}" alt="関東" class="kanto-image">
+        <img src="{% static 'mypage/tyubu_map.png' %}" alt="中部" class="tyubu-image">
+        <img src="{% static 'mypage/kinki_map.png' %}" alt="近畿" class="kinki-image">
+        <img src="{% static 'mypage/tyugoku_map.png' %}" alt="中国" class="tyugoku-image">
+        <img src="{% static 'mypage/shikoku_map.png' %}" alt="四国" class="shikoku-image">
+        <img src="{% static 'mypage/kyusyu_map.png' %}" alt="九州" class="kyusyu-image">
     </div>
 </body>
 </html>
