@@ -2,28 +2,74 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.5">
-    <title>日本地図のイラスト</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>北海道の画像配置</title>
     {% load static %}
     <style>
-        /* 親要素をグリッドとして中央寄せ */
-        .center-container {
-            display: grid;
-            place-items: center;
+        .map-container {
+            position: relative;
+            width: 80%;
+            margin: auto;
+            text-align: center;
         }
-        
-        /* 画像の最大幅を設定 */
-        .center-container img {
-            width: 530px;
-            height: 530px;
+
+
+        /*日本地図*/
+        .japan-image{
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            top: 10px;
+            left:250px;
         }
+
+        /* 北海道の画像 */
+        .hokkaido-image {
+            position: absolute;
+            top: 10px; /* 北海道の画像を地図内の正しい位置に配置 */
+            left: 538.5px;
+            width: 20.6%; /* 画像のサイズ調整 */
+            z-index: 10; /* 画像が他のコンテンツの上に表示されるようにする */
+        }
+
+        /* 東北の地図　*/
+        .touhoku-image{
+            position: absolute;
+            top:152.8px;
+            left: 493.5px;
+            width: 15%; /* 画像のサイズ調整 */
+            z-index: 10; /* 画像が他のコンテンツの上に表示されるようにする */        
+        }
+
+        /* 関東の地図　*/
+        .kanto-image{
+            position: absolute;
+            top: 293.1px;
+            left: 510.2px;
+            width: 7.3%; /* 画像のサイズ調整 */
+            z-index: 10; /* 画像が他のコンテンツの上に表示されるようにする */        
+        }
+
+        /* 中部の地図　*/
+        .tyubu-image{
+            position: absolute;
+            top: 249.6px;
+            left: 431.2px;
+            width: 12.6%; /* 画像のサイズ調整 */
+            z-index: 10; /* 画像が他のコンテンツの上に表示されるようにする */        
+        }
+
+
     </style>
 </head>
 <body>
-    <h1>日本地図</h1>
-    <!-- 画像を中央に配置するためのコンテナ -->
-    <div class="center-container">
-        <img src="{% static 'mypage/japan_map.png' %}" alt="日本地図">
+    <h1 style="text-align: center;">日本地図</h1>
+    <div class="map-container">
+        <img src="{% static 'mypage/japan_map.png' %}" alt="日本地図" class="japan-image">
+        <img src="{% static 'mypage/hokkaido_map.png' %}" alt="北海道" class="hokkaido-image">
+        <img src="{% static 'mypage/touhoku_map.png' %}" alt="#東北" class="touhoku-image">
+        <img src="{% static 'mypage/kanto_map.png' %}" alt="#関東" class="kanto-image">
+        <img src="{% static 'mypage/tyubu_map.png' %}" alt="#中部" class="tyubu-image">
     </div>
 </body>
 </html>
