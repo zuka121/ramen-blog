@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <title>日本地図のイラスト</title>
+    {% load static %}
+    <style>
+        /* 親要素をグリッドとして中央寄せ */
+        .center-container {
+            display: grid;
+            place-items: center;
+        }
+        
+        /* 画像の最大幅を設定 */
+        .center-container img {
+            width: 530px;
+            height: 530px;
+        }
+    </style>
+</head>
+<body>
+    <h1>日本地図</h1>
+    <!-- 画像を中央に配置するためのコンテナ -->
+    <div class="center-container">
+        <img src="{% static 'mypage/japan_map.png' %}" alt="日本地図">
+    </div>
+</body>
+</html>
