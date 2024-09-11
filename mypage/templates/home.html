@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>北海道の画像配置</title>
+    <title>日本地図</title>
     {% load static %}
     <style>
         .map-container {
@@ -14,14 +14,6 @@
         }
 
 
-        /*日本地図*/
-        .japan-image{
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            top: 10px;
-            left:250px;
-        }
 
         /* 北海道の画像 */
         .hokkaido-image {
@@ -96,19 +88,132 @@
         }
 
 
+
+        
+        /* テキストのスタイル（初期状態では非表示） */
+        .text-overlay {
+          position: absolute;
+          top: 50%; /* 画像の中央に表示 */
+          left: 50%;
+          transform: translate(-50%, -50%); /* 中央揃え */
+          color: rgb(60, 172, 22);
+          font-size: 30px;
+          font-weight: bold;
+          z-index: 200; /* 画像より前面に表示 */
+          display: none; /* 初期状態では非表示 */
+          /*background-color: black; /* 背景を半透明にする */
+          padding: 5px 10px;
+          border-radius: 5px;
+        }
+
+        /* ホバー時にテキストを表示 */
+       .image-container:hover .text-overlay {
+          display: block; /* ホバー時にテキストを表示 */
+          transition: transform 0.5s ease; /* アニメーションの速度を指定 */
+        }
+
+        /* 画像をホバーした時に拡大する */
+       .image-container:hover .hokkaido-image{
+          transform: scale(1.5); /* 拡大効果 */
+          z-index: 100; /* 前面に表示 */
+          transition: transform 0.5s ease; /* アニメーションの速度を指定 */
+        }
+
+        /* 画像をホバーした時に拡大する */
+       .image-container:hover .touhoku-image{
+          transform: scale(1.5); /* 拡大効果 */
+          z-index: 100; /* 前面に表示 */
+          transition: transform 0.5s ease; /* アニメーションの速度を指定 */
+        }
+
+        /* 画像をホバーした時に拡大する */
+       .image-container:hover .kanto-image{
+          transform: scale(1.5); /* 拡大効果 */
+          z-index: 100; /* 前面に表示 */
+          transition: transform 0.5s ease; /* アニメーションの速度を指定 */
+        }
+
+        /* 画像をホバーした時に拡大する */
+       .image-container:hover .tyubu-image{
+          transform: scale(1.5); /* 拡大効果 */
+          z-index: 100; /* 前面に表示 */
+          transition: transform 0.5s ease; /* アニメーションの速度を指定 */
+        }
+
+        /* 画像をホバーした時に拡大する */
+       .image-container:hover .kinki-image{
+          transform: scale(1.5); /* 拡大効果 */
+          z-index: 100; /* 前面に表示 */
+          transition: transform 0.5s ease; /* アニメーションの速度を指定 */
+        }
+
+        /* 画像をホバーした時に拡大する */
+       .image-container:hover .tyugoku-image{
+          transform: scale(1.5); /* 拡大効果 */
+          z-index: 100; /* 前面に表示 */
+          transition: transform 0.5s ease; /* アニメーションの速度を指定 */
+        }
+
+        /* 画像をホバーした時に拡大する */
+       .image-container:hover .shikoku-image{
+          transform: scale(1.5); /* 拡大効果 */
+          z-index: 100; /* 前面に表示 */
+          transition: transform 0.5s ease; /* アニメーションの速度を指定 */
+        }
+
+        /* 画像をホバーした時に拡大する */
+       .image-container:hover .kyusyu-image{
+          transform: scale(1.5); /* 拡大効果 */
+          z-index: 100; /* 前面に表示 */
+          transition: transform 0.5s ease; /* アニメーションの速度を指定 */
+        }
+
+
     </style>
 </head>
 <body>
-    <h1 style="text-align: center;">日本地図</h1>
-    <div class="map-container">        
-        <img src="{% static 'mypage/hokkaido_map.png' %}" alt="北海道" class="hokkaido-image">
-        <img src="{% static 'mypage/touhoku_map.png' %}" alt="東北" class="touhoku-image">
-        <img src="{% static 'mypage/kanto_map.png' %}" alt="関東" class="kanto-image">
-        <img src="{% static 'mypage/tyubu_map.png' %}" alt="中部" class="tyubu-image">
-        <img src="{% static 'mypage/kinki_map.png' %}" alt="近畿" class="kinki-image">
-        <img src="{% static 'mypage/tyugoku_map.png' %}" alt="中国" class="tyugoku-image">
-        <img src="{% static 'mypage/shikoku_map.png' %}" alt="四国" class="shikoku-image">
-        <img src="{% static 'mypage/kyusyu_map.png' %}" alt="九州" class="kyusyu-image">
+    <h1>日本地図</h1>
+    <div class="map-container">    
+
+        <div class="image-container">
+            <img src="{% static 'mypage/hokkaido_map.png' %}" alt="北海道" class="hokkaido-image">
+            <div class="text-overlay">北海道</div> <!-- テキストを表示する要素 -->
+        </div>
+
+        <div class="image-container">
+            <img src="{% static 'mypage/touhoku_map.png' %}" alt="東北" class="touhoku-image">
+            <div class="text-overlay">東北</div> <!-- テキストを表示する要素 -->
+        </div>
+
+        <div class="image-container">
+            <img src="{% static 'mypage/kanto_map.png' %}" alt="関東" class="kanto-image">
+            <div class="text-overlay">関東</div> <!-- テキストを表示する要素 -->
+        </div>
+
+        <div class="image-container">
+            <img src="{% static 'mypage/tyubu_map.png' %}" alt="中部" class="tyubu-image">
+            <div class="text-overlay">中部</div> <!-- テキストを表示する要素 -->
+        </div>
+        
+        <div class="image-container">
+            <img src="{% static 'mypage/kinki_map.png' %}" alt="近畿" class="kinki-image">
+            <div class="text-overlay">近畿</div> <!-- テキストを表示する要素 -->
+        </div>
+        
+        <div class="image-container">
+            <img src="{% static 'mypage/tyugoku_map.png' %}" alt="中国" class="tyugoku-image">
+            <div class="text-overlay">中国</div> <!-- テキストを表示する要素 -->
+        </div>
+
+        <div class="image-container">
+            <img src="{% static 'mypage/shikoku_map.png' %}" alt="四国" class="shikoku-image">
+            <div class="text-overlay">四国</div> <!-- テキストを表示する要素 -->
+        </div>
+        
+        <div class="image-container">
+            <img src="{% static 'mypage/kyusyu_map.png' %}" alt="九州" class="kyusyu-image">
+            <div class="text-overlay">九州</div> <!-- テキストを表示する要素 -->
+        </div>
     </div>
 </body>
 </html>
