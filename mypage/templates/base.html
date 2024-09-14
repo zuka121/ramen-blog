@@ -18,59 +18,77 @@
         }
 
         /* 左側のメニュー全体をブロックとして囲む */
-       .menu-container {
-          width: 200px; /* メニューの幅を固定 */
-          background-color: #f4f4f4; /* メニューの背景色 */
-          box-sizing: border-box;
-          border: 2px solid #000000; /* メニュー全体を囲む線を追加 */
-          border-radius: 10px; /* 角を少し丸める */
-          margin: 20px; /* メニュー周囲に余白を追加 */
+        .menu-container {
+            width: 200px; /* メニューの幅を固定 */
+            background-color: #f4f4f4; /* メニューの背景色 */
+            box-sizing: border-box;
+            border: 2px solid #000000; /* メニュー全体を囲む線を追加 */
+            border-radius: 10px; /* 角を少し丸める */
+            margin: 20px; /* メニュー周囲に余白を追加 */
+            padding-top: 10px;
+        }
+
+        /* メニューリストの余計なマージンやパディングを削除 */
+        .menu {
+            padding: 10px;
+            margin: 0;
         }
 
         /* メニュー項目 */
         .menu-item {
             list-style: none;
-            margin: 0px 0px 0px 0px;
+            margin: 10px 10px 30px 0px;
         }
 
         .menu-item a {
-            display: block;
-            padding: 0px 0px 0px 0px;
+            padding: 10px;
             color: #000;
             text-decoration: none;
             font-size: 18px;
-            background-color: #9fcb90; /* メニューリンクの背景色 */
+            font-weight: bold;
             transition: background-color 0.3s ease;
             text-align: left; /* テキストを左揃えにする */
         }
 
         .menu-item a:hover {
-          background-color: #ff9900; /* ホバー時の背景色 */
-          color: white; /* ホバー時の文字色 */
+            background-color: rgb(123, 208, 95); /* ホバー時の背景色 */
+            color: white; /* ホバー時の文字色 */
         }
 
         /* 右側のコンテンツエリア */
         .content-container {
             flex: 1; /* 残りのスペースを使う */
-            padding: 0px;
+            padding: 10px;
             box-sizing: border-box;
+        }
+
+        /* メニュー上のロゴ画像 */
+        .menu-logo {
+            width: 140px; /* 画像の幅を調整 */
+            margin: 15px auto;
+            display: block; /* ブロック要素にする */
         }
     </style>
 </head>
 <body>
+    {% load static %}
 
     <!-- レイアウト全体 -->
     <div class="layout-container">
-        <!-- 左側のメニュー -->
-        <nav class="menu-container">
-            <ul class="menu">
-                <li class="menu-item"><a href="{% url 'home' %}">ホーム</a></li>
-                <li class="menu-item"><a href="{% url 'about' %}">About</a></li>
-                <li class="menu-item"><a href="{% url 'services' %}">サービス</a></li>
-                <li class="menu-item"><a href="{% url 'contact' %}">お問い合わせ</a></li>
-                <li class="menu-item"><a href="{% url 'blog' %}">ブログ</a></li>
-            </ul>
-        </nav>
+        <!-- メニューの外に画像を配置 -->
+        <div>
+            <a href="{% url 'home' %}"><img src="{% static 'mypage/logo.png' %}" alt="ロゴ" class="menu-logo"></a>
+            <!-- 左側のメニュー -->
+            <nav class="menu-container">
+                <ul class="menu">
+                    <li class="menu-item"><a href="{% url 'home' %}">ホーム</a></li>
+                    <li class="menu-item"><a href="{% url 'about' %}">About</a></li>
+                    <li class="menu-item"><a href="{% url 'services' %}">サービス</a></li>
+                    <li class="menu-item"><a href="{% url 'contact' %}">お問い合わせ</a></li>
+                    <li class="menu-item"><a href="{% url 'blog' %}">ブログ</a></li>
+                </ul>
+            </nav>
+        </div>
 
         <!-- 右側のコンテンツ -->
         <div class="content-container">
