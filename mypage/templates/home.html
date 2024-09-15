@@ -5,226 +5,211 @@
 {% block content %}
 
     {% load static %}
-    <style>
+ <style>
         .map-container {
             position: relative;
-            width: 80%;
+            width: 1010px;
+            height:600px;
             margin: auto;
             text-align: center;
+            padding-top: 20px;
+            /*border: solid 3px;*/
         }
 
 
+        /* 各地方の画像をmap-container内に配置 */
+        .hokkaido-image, .touhoku-image, .kanto-image, .tyubu-image, .kinki-image, .tyugoku-image, .shikoku-image, .kyusyu-image {
+            position: absolute;
+            z-index: 10; 
+        }
 
         /* 北海道の画像 */
         .hokkaido-image {
-            position: absolute;
-            top: 10px; /* 北海道の画像を地図内の正しい位置に配置 */
+            top: 10px; 
             left: 538.5px;
-            width: 20.6%; /* 画像のサイズ調整 */
-            z-index: 10; /* 画像が他のコンテンツの上に表示されるようにする */
+            width: 20.6%;
         }
 
-        /* 東北の地図　*/
-        .touhoku-image{
-            position: absolute;
-            top:152.8px;
+        /* 東北の地図 */
+        .touhoku-image {
+            top: 152.8px;
             left: 493.5px;
-            width: 15%; /* 画像のサイズ調整 */
-            z-index: 10; /* 画像が他のコンテンツの上に表示されるようにする */        
+            width: 15%;
         }
 
-        /* 関東の地図　*/
-        .kanto-image{
-            position: absolute;
+        /* 関東の地図 */
+        .kanto-image {
             top: 293.1px;
             left: 510.2px;
-            width: 7.3%; /* 画像のサイズ調整 */
-            z-index: 10; /* 画像が他のコンテンツの上に表示されるようにする */        
+            width: 7.3%;
         }
 
-        /* 中部の地図　*/
-        .tyubu-image{
-            position: absolute;
+        /* 中部の地図 */
+        .tyubu-image {
             top: 249.6px;
             left: 431.2px;
-            width: 12.6%; /* 画像のサイズ調整 */
-            z-index: 10; /* 画像が他のコンテンツの上に表示されるようにする */        
+            width: 12.6%;
         }
 
-        /* 近畿の地図　*/
-        .kinki-image{
-            position: absolute;
+        /* 近畿の地図 */
+        .kinki-image {
             top: 338.8px;
             left: 404.2px;
-            width: 7.3%; /* 画像のサイズ調整 */
-            z-index: 10; /* 画像が他のコンテンツの上に表示されるようにする */        
+            width: 7.3%;
         }
 
-        /* 中国の地図　*/
-        .tyugoku-image{
-            position: absolute;
+        /* 中国の地図 */
+        .tyugoku-image {
             top: 308.8px;
             left: 316px;
-            width: 9.6%; /* 画像のサイズ調整 */
-            z-index: 10; /* 画像が他のコンテンツの上に表示されるようにする */        
+            width: 9.6%;
         }
 
-        /* 四国の地図　*/
-        .shikoku-image{
-            position: absolute;
+        /* 四国の地図 */
+        .shikoku-image {
             top: 371.6px;
             left: 351.4px;
-            width: 6.6%; /* 画像のサイズ調整 */
-            z-index: 10; /* 画像が他のコンテンツの上に表示されるようにする */        
+            width: 6.6%;
         }
 
-        /* 九州の地図　*/
-        .kyusyu-image{
-            position: absolute;
+        /* 九州の地図 */
+        .kyusyu-image {
             top: 363.9px;
             left: 226.1px;
-            width: 14.4%; /* 画像のサイズ調整 */
-            z-index: 10; /* 画像が他のコンテンツの上に表示されるようにする */        
+            width: 14.4%;
         }
 
-
-
-        
         /* テキストのスタイル（初期状態では非表示） */
         .text-overlay {
-          position: absolute;
-          top: 50%; /* 画像の中央に表示 */
-          left: 50%;
-          transform: translate(-50%, -50%); /* 中央揃え */
-          color: rgb(60, 172, 22);
-          font-size: 30px;
-          font-weight: bold;
-          z-index: 200; /* 画像より前面に表示 */
-          display: none; /* 初期状態では非表示 */
-          /*background-color: black; /* 背景を半透明にする */
-          padding: 5px 10px;
-          border-radius: 5px;
+            position: absolute;
+            top: 5%; 
+            left: 40%;
+            transform: translate(-50%, -50%);
+            color: rgb(60, 172, 22);
+            font-size: 30px;
+            font-weight: bold;
+            z-index: 200; 
+            display: none;
+            padding: 5px 10px;
+            border-radius: 5px;
         }
 
         /* ホバー時にテキストを表示 */
-       .image-container:hover .text-overlay {
-          display: block; /* ホバー時にテキストを表示 */
-          transition: transform 0.5s ease; /* アニメーションの速度を指定 */
+        .image-container:hover .text-overlay {
+            display: block;
+            transition: transform 0.5s ease;
         }
 
-        /* 画像をホバーした時に拡大する */
-       .image-container:hover .hokkaido-image{
-          transform: scale(1.5); /* 拡大効果 */
-          z-index: 100; /* 前面に表示 */
-          transition: transform 0.5s ease; /* アニメーションの速度を指定 */
-          filter: drop-shadow(0  0 5px rgb(67, 67, 67))
-        }
-
-        /* 画像をホバーした時に拡大する */
-       .image-container:hover .touhoku-image{
-          transform: scale(1.5); /* 拡大効果 */
-          z-index: 100; /* 前面に表示 */
-          transition: transform 0.5s ease; /* アニメーションの速度を指定 */
-          filter: drop-shadow(0  0 5px rgb(67, 67, 67))
-        }
-
-        /* 画像をホバーした時に拡大する */
-       .image-container:hover .kanto-image{
-          transform: scale(1.5); /* 拡大効果 */
-          z-index: 100; /* 前面に表示 */
-          transition: transform 0.5s ease; /* アニメーションの速度を指定 */
-          filter: drop-shadow(0  0 5px rgb(67, 67, 67))
-        }
-
-        /* 画像をホバーした時に拡大する */
-       .image-container:hover .tyubu-image{
-          transform: scale(1.6); /* 拡大効果 */
-          z-index: 100; /* 前面に表示 */
-          transition: transform 0.5s ease; /* アニメーションの速度を指定 */
-          filter: drop-shadow(0  0 5px rgb(67, 67, 67))
-        }
-
-        /* 画像をホバーした時に拡大する */
-       .image-container:hover .kinki-image{
-          transform: scale(1.6); /* 拡大効果 */
-          z-index: 100; /* 前面に表示 */
-          transition: transform 0.5s ease; /* アニメーションの速度を指定 */
-          filter: drop-shadow(0  0 5px rgb(67, 67, 67))
-        }
-
-        /* 画像をホバーした時に拡大する */
-       .image-container:hover .tyugoku-image{
-          transform: scale(1.6); /* 拡大効果 */
-          z-index: 100; /* 前面に表示 */
-          transition: transform 0.5s ease; /* アニメーションの速度を指定 */
-          filter: drop-shadow(0  0 5px rgb(67, 67, 67))
-        }
-
-        /* 画像をホバーした時に拡大する */
-       .image-container:hover .shikoku-image{
-          transform: scale(1.6); /* 拡大効果 */
-          z-index: 100; /* 前面に表示 */
-          transition: transform 0.5s ease; /* アニメーションの速度を指定 */
-          filter: drop-shadow(0  0 5px rgb(67, 67, 67))
-        }
-
-        /* 画像をホバーした時に拡大する */
-       .image-container:hover .kyusyu-image{
-          transform: scale(1.6); /* 拡大効果 */
-          z-index: 100; /* 前面に表示 */
-          transition: transform 0.5s ease; /* アニメーションの速度を指定 */
-          filter: drop-shadow(0  0 5px rgb(67, 67, 67))
+        /* ホバー時に各地方の画像を拡大 */
+        .image-container:hover img {
+            transform: scale(1.5);
+            z-index: 100;
+            transition: transform 0.5s ease;
+            filter: drop-shadow(0  0 5px rgb(67, 67, 67));
         }
 
 
+
+        .emphasize {
+          border-left:solid 5px rgb(60, 172, 22);
+          padding:0px 8px;
+        }
+
+
+        /* 横並びのブロック配置 */
+        .block-container {
+         display: flex;
+         justify-content: left; /* ブロックを中央に配置 */
+         gap: 20px; /* 各ブロックの間隔を設定 */
+         margin-top: 50px; /* 地図との間にスペースを追加 */
+         margin-left: 50px;
+        }
+
+    
+        .block {
+           width: 250px;
+           height: 200px;
+           background-color: lightblue; /* ブロックの色 */
+           border: 2px solid gray;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           font-size: 20px;
+           font-weight: bold;
+           border-radius: 10px; /* 角を少し丸める */
+        }
     </style>
-</head>
-<body>
-    <h1>日本全国のらーめん</h1>
+
+    <div class="emphasize">
+        <h1>日本全国のらーめん</h1>
+    </div>
+
     <p>各地方をクリックすれば、それぞれの地方について詳しく知ることができます</p>
     <p>緑で塗られた都道府県には、らーめんの情報があります</p>
-    <div class="map-container">    
 
+    <div class="map-container">    
         <div class="image-container">
             <img src="{% static 'mypage/hokkaido_map.png' %}" alt="北海道" class="hokkaido-image">
-            <div class="text-overlay">北海道</div> <!-- テキストを表示する要素 -->
+            <div class="text-overlay">北海道</div>
         </div>
 
         <div class="image-container">
             <img src="{% static 'mypage/touhoku_map.png' %}" alt="東北" class="touhoku-image">
-            <div class="text-overlay">東北</div> <!-- テキストを表示する要素 -->
+            <div class="text-overlay">東北</div>
         </div>
 
         <div class="image-container">
             <img src="{% static 'mypage/kanto_map.png' %}" alt="関東" class="kanto-image">
-            <div class="text-overlay">関東</div> <!-- テキストを表示する要素 -->
+            <div class="text-overlay">関東</div>
         </div>
 
         <div class="image-container">
             <img src="{% static 'mypage/tyubu_map.png' %}" alt="中部" class="tyubu-image">
-            <div class="text-overlay">中部</div> <!-- テキストを表示する要素 -->
+            <div class="text-overlay">中部</div>
         </div>
-        
+
         <div class="image-container">
+            <a href="{% url 'kinki' %}">
             <img src="{% static 'mypage/kinki_map.png' %}" alt="近畿" class="kinki-image">
-            <div class="text-overlay">近畿</div> <!-- テキストを表示する要素 -->
+            </a>
+            <div class="text-overlay">近畿</div>
         </div>
-        
+
         <div class="image-container">
             <img src="{% static 'mypage/tyugoku_map.png' %}" alt="中国" class="tyugoku-image">
-            <div class="text-overlay">中国</div> <!-- テキストを表示する要素 -->
+            <div class="text-overlay">中国</div>
         </div>
 
         <div class="image-container">
             <img src="{% static 'mypage/shikoku_map.png' %}" alt="四国" class="shikoku-image">
-            <div class="text-overlay">四国</div> <!-- テキストを表示する要素 -->
+            <div class="text-overlay">四国</div>
         </div>
-        
+
         <div class="image-container">
             <img src="{% static 'mypage/kyusyu_map.png' %}" alt="九州" class="kyusyu-image">
-            <div class="text-overlay">九州</div> <!-- テキストを表示する要素 -->
+            <div class="text-overlay">九州</div>
         </div>
     </div>
-</body>
 
+
+    <!-- 3つのブロックを横並びに配置 -->
+    <div class="block-container">
+        <div class="block">北海道</div>
+        <div class="block">東北</div>
+        <div class="block">関東</div>
+    </div>
+
+    <div class="block-container">
+        <div class="block">中部</div>
+        <div class="block">近畿</div>
+        <div class="block">中国</div>
+    </div>
+
+    <div class="block-container">
+        <div class="block">四国</div>
+        <div class="block">九州</div>
+        
+    </div>
+
+    
 {% endblock %}

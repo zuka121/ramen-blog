@@ -16,3 +16,6 @@ def contact(request):
 def blog(request):
     return render(request, 'blog.html')
 
+def kinki(request):
+    return render(request, 'kinki.html')
+
