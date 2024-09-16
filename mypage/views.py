@@ -19,3 +19,6 @@ def blog(request):
 def kinki(request):
     return render(request, 'kinki.html')
 
+def wakayama(request):
+    return render(request, 'wakayama.html')
+
