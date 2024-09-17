@@ -5,14 +5,73 @@
 {% block content %}
 
 <style>
+    p {
+        line-height: 1;
+    }
+
     .emphasize {
-        border-left: solid 5px rgb(60, 172, 22);
+        border-left: solid 5px rgb(123, 208, 95);
         padding: 0px 8px;
     }
 
+    .title{
+        background-color: rgb(220, 160, 30);
+        font-weight: bold;
+        color: white;
+        padding: 0.5px 10px 0.5px 10px;
+        border-radius: 20px;
+        margin:0px 147px 0px 0px;
+        text-align: center;
+        
+    }
+    
+
+    .layout-container{
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .image-container{
+        width: 500px;
+        margin: 15px 10px;
+    }
+
+    .content-container{
+        width: 500px;
+        margin: 0px 10px;
+    }
+
+    .content-container1{
+        display: flex;
+        justify-content: left;
+        border: solid 1.5px black;
+        border-radius: 10px;
+        background-color: #f4f4f4;
+        padding-top: 10px;
+        padding-right: 10px;
+    }
+
+    .content-container1 img{
+        width: 40%;
+        margin: auto;
+    }
+    .content-container2{
+        justify-content: left;
+    }
+
+    .content-container3{
+        justify-content: left;
+        border: solid 1.5px black;
+        border-radius: 10px;
+        background-color: #f4f4f4;
+        margin-top: 10px;
+        padding-top: 5px;
+    }
+
     .main-image-container {
-        width: 400px;
-        height: 300px;
+        width: 500px;
+        height: 375px;
         position: relative;
         margin: auto;
         border-radius: 10px;
@@ -37,8 +96,8 @@
     }
 
     .thumbnail-container img {
-        width: 80px;
-        height: 60px;
+        width: 100px;
+        height: 75px;
         margin: 0 5px;
         cursor: pointer;
         opacity: 0.6;
@@ -51,7 +110,7 @@
     }
 
     .thumbnail-container img.active-thumbnail {
-        border: solid 1.5px black;
+        border: solid 3px rgb(60, 172, 22);
         opacity: 1;
     }
 
@@ -63,21 +122,50 @@
         <h1>しま彰</h1>
     </div>
 
-    <!-- メイン画像 -->
-    <div class="main-image-container">
-        <img src="{% static 'mypage/shimasyo1.jpg' %}" class="active" alt="画像1">
-        <img src="{% static 'mypage/shimasyo2.jpg' %}" alt="画像2">
-        <img src="{% static 'mypage/shimasyo3.jpg' %}" alt="画像3">
-        <img src="{% static 'mypage/shimasyo4.jpg' %}" alt="画像4">
-    </div>
+    <div class="layout-container">
+      <div class="image-container">
+         <!-- メイン画像 -->
+         <div class="main-image-container">
+             <img src="{% static 'mypage/shimasyo1.jpg' %}" class="active" alt="画像1">
+             <img src="{% static 'mypage/shimasyo2.jpg' %}" alt="画像2">
+             <img src="{% static 'mypage/shimasyo3.jpg' %}" alt="画像3">
+             <img src="{% static 'mypage/shimasyo4.jpg' %}" alt="画像4">
+         </div>
 
-    <!-- サムネイル画像のメニュー -->
-    <div class="thumbnail-container">
-        <img src="{% static 'mypage/shimasyo1.jpg' %}" class="active-thumbnail" alt="画像1のサムネイル" data-index="0">
-        <img src="{% static 'mypage/shimasyo2.jpg' %}" alt="画像2のサムネイル" data-index="1">
-        <img src="{% static 'mypage/shimasyo3.jpg' %}" alt="画像3のサムネイル" data-index="2">
-        <img src="{% static 'mypage/shimasyo4.jpg' %}" alt="画像4のサムネイル" data-index="3">
+         <!-- サムネイル画像のメニュー -->
+          <div class="thumbnail-container">
+             <img src="{% static 'mypage/shimasyo1.jpg' %}" class="active-thumbnail" alt="画像1のサムネイル" data-index="0">
+             <img src="{% static 'mypage/shimasyo2.jpg' %}" alt="画像2のサムネイル" data-index="1">
+             <img src="{% static 'mypage/shimasyo3.jpg' %}" alt="画像3のサムネイル" data-index="2">
+             <img src="{% static 'mypage/shimasyo4.jpg' %}" alt="画像4のサムネイル" data-index="3">
+         </div>
+      </div>
+
+      <div class="content-container">
+         <div class="content-container1">
+             <img src="{% static 'mypage/shimasyo_point.png' %}" alt="しま彰地図">
+             <div class="content-container2">
+                  <div class="title">
+                     場所
+                  </div>
+                  <p> 和歌山県紀の川市貴志川町長原</p>
+                  <div class="title">
+                     営業時間
+                  </div>
+                  <p> 11:00 ~ 13:15</p>
+                  <div class="title">
+                     定休日               
+                  </div>
+                  <p>　火</p>
+             </div>
+          </div>
+
+          <div class="content-container3">
+              <p>感想</p>        
+          </div>
+      </div>
     </div>
+    
 
     <script>
         // メイン画像とサムネイルの要素を取得
