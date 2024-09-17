@@ -22,3 +22,5 @@ def kinki(request):
 def wakayama(request):
     return render(request, 'wakayama.html')
 
+def shimasyo(request):
+    return render(request, 'shimasyo.html')

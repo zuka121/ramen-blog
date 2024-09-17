@@ -27,4 +27,5 @@ urlpatterns = [
     path('blog/', views.blog, name='blog'),
     path('kinki/', views.kinki, name='kinki'),
     path('wakayama/', views.wakayama, name='wakayama'),
+    path('shimasyo/', views.shimasyo, name='shimasyo'),
 ]

@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block title %}しま彰{% endblock %}
+
+{% block content %}
+
+<style>
+    .emphasize {
+        border-left: solid 5px rgb(60, 172, 22);
+        padding: 0px 8px;
+    }
+
+    .main-image-container {
+        width: 400px;
+        height: 300px;
+        position: relative;
+        margin: auto;
+        border-radius: 10px;
+    }
+
+    .main-image-container img {
+        width: 100%;
+        height: auto;
+        display: none; /* 初期では全て非表示 */
+        border-radius: 10px;
+    }
+
+    .main-image-container img.active {
+        display: block; /* 表示する画像だけをブロック表示 */
+        
+    }
+
+    .thumbnail-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .thumbnail-container img {
+        width: 80px;
+        height: 60px;
+        margin: 0 5px;
+        cursor: pointer;
+        opacity: 0.6;
+        border-radius: 7px;
+    }
+
+    .thumbnail-container img:hover {
+        opacity:1;
+
+    }
+
+    .thumbnail-container img.active-thumbnail {
+        border: solid 1.5px black;
+        opacity: 1;
+    }
+
+</style>
+
+<body>
+    {% load static %}
+    <div class="emphasize">
+        <h1>しま彰</h1>
+    </div>
+
+    <!-- メイン画像 -->
+    <div class="main-image-container">
+        <img src="{% static 'mypage/shimasyo1.jpg' %}" class="active" alt="画像1">
+        <img src="{% static 'mypage/shimasyo2.jpg' %}" alt="画像2">
+        <img src="{% static 'mypage/shimasyo3.jpg' %}" alt="画像3">
+        <img src="{% static 'mypage/shimasyo4.jpg' %}" alt="画像4">
+    </div>
+
+    <!-- サムネイル画像のメニュー -->
+    <div class="thumbnail-container">
+        <img src="{% static 'mypage/shimasyo1.jpg' %}" class="active-thumbnail" alt="画像1のサムネイル" data-index="0">
+        <img src="{% static 'mypage/shimasyo2.jpg' %}" alt="画像2のサムネイル" data-index="1">
+        <img src="{% static 'mypage/shimasyo3.jpg' %}" alt="画像3のサムネイル" data-index="2">
+        <img src="{% static 'mypage/shimasyo4.jpg' %}" alt="画像4のサムネイル" data-index="3">
+    </div>
+
+    <script>
+        // メイン画像とサムネイルの要素を取得
+        const mainImages = document.querySelectorAll('.main-image-container img');
+        const thumbnails = document.querySelectorAll('.thumbnail-container img');
+
+        thumbnails.forEach((thumbnail, index) => {
+            // サムネイルをクリックした時のイベント
+            thumbnail.addEventListener('click', function() {
+                // 全てのメイン画像とサムネイルのactiveクラスを削除
+                mainImages.forEach(img => img.classList.remove('active'));
+                thumbnails.forEach(thumb => thumb.classList.remove('active-thumbnail'));
+
+                // クリックしたサムネイルに対応するメイン画像を表示
+                mainImages[index].classList.add('active');
+                thumbnail.classList.add('active-thumbnail');
+            });
+        });
+    </script>
+
+</body>
+
+{% endblock %}
