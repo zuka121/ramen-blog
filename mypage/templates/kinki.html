@@ -10,26 +10,49 @@
            padding:0px 8px;
         }
 
+        a:hover{
+         opacity: 0.7;
+        }
+
         /* 横並びのブロック配置 */
         .block-container {
           display: flex;
           justify-content: left; /* ブロックを中央に配置 */
           gap: 20px; /* 各ブロックの間隔を設定 */
-          margin-top: 50px; /* 地図との間にスペースを追加 */
-          margin-left: 50px;
+          margin-top: -150px; /* 地図との間にスペースを追加 */
+          margin-left: 30px;
+          margin-bottom: 180px;
         }
 
         .block {
+          position: relative;
           width: 250px;
-          height: 200px;
-          background-color: #f4f4f4; /* ブロックの色 */
+          height: 187.5px;
+          background-color: black; /* ブロックの色 */
           border: 2px solid gray;
-          display: flex;
           align-items: center;
           justify-content: center;
           font-size: 20px;
           font-weight: bold;
           border-radius: 10px; /* 角を少し丸める */
+        }
+
+        .block img{
+          width: 100%;
+          border-radius: 8px;
+          opacity: 0.7;
+          display: block;
+        }
+
+        .block .text-overlay1{
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: white;
+          font-size: 22px;
+          font-weight: bold;
+          text-shadow: 0px 0px 5px black;
         }
 
         .map-container {
@@ -162,10 +185,44 @@
       </div>
 
       <div class="block-container">
-          <div class="block">大阪</div>
-          <div class="block">京都</div>
-          <div class="block">兵庫</div>
+        <div class="block">
+          <img src="{% static 'mypage/ramenhayato1.jpeg' %}">
+          <div class="text-overlay1">大阪</div>
+        </div>
+        <div class="block">
+          <img src="{% static 'mypage/daiichiasahi1.jpeg' %}">
+          <div class="text-overlay1">京都</div>
+        </div>
+        <div class="block">
+          <img src="{% static 'mypage/nagomi1.jpeg' %}">
+          <div class="text-overlay1">兵庫</div>
+        </div>
       </div>
+
+      <div class="block-container">
+        <div class="block">
+          <img src="{% static 'mypage/koyoken1.jpeg' %}">
+          <div class="text-overlay1">滋賀</div>
+        </div>
+        <div class="block">
+          <img src="{% static 'mypage/senichi1.jpeg' %}">
+          <div class="text-overlay1">奈良</div>
+        </div>
+        <a href="{% url 'wakayama' %}">
+          <div class="block">
+            <img src="{% static 'mypage/shimasyo4.jpg' %}">
+            <div class="text-overlay1">和歌山</div>
+          </div>
+        </a>  
+      </div>
+
+      <div class="block-container">
+        <div class="block">
+          <img src="{% static 'mypage/mie_background.jpeg' %}">
+          <div class="text-overlay1">三重</div>
+        </div>
+      </div>
+
  </body>
 
 {% endblock %}

@@ -6,7 +6,18 @@
 
 <style>
     p {
-        line-height: 1;
+        line-height: 1.5;
+        padding: 0px;
+        margin: 4px;
+    }
+
+    h2{
+        margin: 0px;
+    }
+
+    .date{
+        font-size: 16px;
+        color: gray;
     }
 
     .emphasize {
@@ -20,7 +31,7 @@
         color: white;
         padding: 0.5px 10px 0.5px 10px;
         border-radius: 20px;
-        margin:0px 147px 0px 0px;
+        margin:10px 147px 10px 0px;
         text-align: center;
         
     }
@@ -34,18 +45,18 @@
 
     .image-container{
         width: 500px;
-        margin: 15px 10px;
+        margin: 0px 10px;
     }
 
     .content-container{
         width: 500px;
-        margin: 0px 10px;
+        margin: 50px 10px;
     }
 
     .content-container1{
         display: flex;
         justify-content: left;
-        border: solid 1.5px black;
+        border: solid 2px gray;
         border-radius: 10px;
         background-color: #f4f4f4;
         padding-top: 10px;
@@ -62,11 +73,11 @@
 
     .content-container3{
         justify-content: left;
-        border: solid 1.5px black;
+        border: solid 2px gray;
         border-radius: 10px;
         background-color: #f4f4f4;
         margin-top: 10px;
-        padding-top: 5px;
+        padding: 10px;
     }
 
     .main-image-container {
@@ -124,6 +135,10 @@
 
     <div class="layout-container">
       <div class="image-container">
+           <h2>W中華そば(2玉)　&yen;800</h2>
+              <div class="date">
+                2024年9月
+              </div>
          <!-- メイン画像 -->
          <div class="main-image-container">
              <img src="{% static 'mypage/shimasyo1.jpg' %}" class="active" alt="画像1">
@@ -161,7 +176,10 @@
           </div>
 
           <div class="content-container3">
-              <p>感想</p>        
+              <p>和歌山らーめんの名店、うらしまのDNAを引き継いだお店。</p>
+              <p>臭みのない豚骨がまろやかで、醬油との相性も抜群なスープ。</p>
+              <p>チャーシューが絶妙な味付けで、全ての要素がまとまった一杯。デフォルトの中華そばの価格は驚異の600円とコスパが良すぎます。</p>
+              <p>立地でなかなか訪問難易度は高いですが、行けば満足すること間違いなしです。</p>        
           </div>
       </div>
     </div>
