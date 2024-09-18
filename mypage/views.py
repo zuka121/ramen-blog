@@ -4,20 +4,32 @@ from django.shortcuts import render
 def home(request):
     return render(request, 'home.html')
 
-def about(request):
-    return render(request, 'about.html')
+def hokkaido(request):
+    return render(request, 'hokkaido.html')
 
-def services(request):
-    return render(request, 'services.html')
+def tohoku(request):
+    return render(request, 'tohoku.html')
 
-def contact(request):
-    return render(request, 'contact.html')
+def kanto(request):
+    return render(request, 'kanto.html')
 
-def blog(request):
-    return render(request, 'blog.html')
+def tyubu(request):
+    return render(request, 'tyubu.html')
 
 def kinki(request):
     return render(request, 'kinki.html')
+
+def tyugoku(request):
+    return render(request, 'tyugoku.html')
+
+def shikoku(request):
+    return render(request, 'shikoku.html')
+
+def kyusyu(request):
+    return render(request, 'kyusyu.html')
+
+def profile(request):
+    return render(request, 'profile.html')
 
 def wakayama(request):
     return render(request, 'wakayama.html')
