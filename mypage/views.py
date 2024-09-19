@@ -1,5 +1,9 @@
-# helloapp/views.py
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Comment
+from .forms import CommentForm
+
+from .forms import SignUpForm
+from django.contrib.auth import login
 
 def home(request):
     return render(request, 'home.html')
@@ -36,3 +40,39 @@ def wakayama(request):
 
 def shimasyo(request):
     return render(request, 'shimasyo.html')
+
+
+
+def comment_list(request):
+    comments = Comment.objects.all().order_by('-created_at')
+    form = None
+
+    # ログインしている場合のみフォームを表示
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form = CommentForm(request.POST)
+            if form.is_valid():
+                comment = form.save(commit=False)
+                comment.user = request.user
+                comment.save()
+                return redirect('comment_list')
+        else:
+            form = CommentForm()
+
+    context = {
+        'comments': comments,
+        'form': form
+    }
+    return render(request, 'comments/comment_list.html', context)
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)  # 登録後すぐにログインさせる場合
+            return redirect('comment_list')  # 成功後のリダイレクト先
+    else:
+        form = SignUpForm()
+    return render(request, 'registration/signup.html', {'form': form})

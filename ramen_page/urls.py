@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path
 from mypage import views
 
+from django.contrib.auth import views as auth_views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
@@ -32,4 +34,11 @@ urlpatterns = [
     path('profile', views.profile, name='profile'),
     path('wakayama/', views.wakayama, name='wakayama'),
     path('shimasyo/', views.shimasyo, name='shimasyo'),
+
+
+    path('comments/', views.comment_list, name='comment_list'),
+    path('login/', auth_views.LoginView.as_view(), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('signup/', views.signup, name='signup'), 
 ]
+

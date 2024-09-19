@@ -1,0 +1,59 @@
+<!-- templates/comments/comment_list.html -->
+<style>
+  .username {
+          font-size: 15px;
+          color: rgb(60, 172, 22);
+          font-weight: bold;
+        }
+  
+  .content-box {
+    width: 300px;
+    border: solid 1.5px gray;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  
+  .content-date {
+    font-size: 13px;
+    text-align: right;
+    color: gray;
+  }
+</style>
+
+
+<body>
+   <h2>Comments</h2>
+
+   <!-- コメントリストの表示 -->
+   <ul>
+     {% for comment in comments %}
+       <p><div class="username"> {{ comment.user.username }} </div> 
+          <div class="content-box">{{ comment.content }} 
+             <div class="content-date">{{ comment.created_at }}</div>
+          </div>
+       </p>
+     {% empty %}
+       <p>コメントはまだありません</p>
+     {% endfor %}
+   </ul>
+
+   {% if user.is_authenticated %}
+     <!-- コメント投稿フォーム -->
+     <h3>Add a comment:</h3>
+     <form method="post">
+       {% csrf_token %}
+       {{ form.as_p }}
+       <button type="submit">Submit</button>
+     </form>
+
+     <!-- ログアウトボタン -->
+     <form method="post" action="{% url 'logout' %}">
+       {% csrf_token %}
+       <button type="submit">Logout</button>
+     </form>
+
+   {% else %}
+     <p>You must be logged in to add a comment.</p>
+     <a href="{% url 'login' %}">Login here</a>
+   {% endif %}
+</body>
