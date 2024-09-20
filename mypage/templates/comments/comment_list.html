@@ -7,10 +7,11 @@
         }
   
   .content-box {
-    width: 300px;
+    width: 50%;
     border: solid 1.5px gray;
     border-radius: 5px;
     padding: 5px;
+    margin: 0px;
   }
   
   .content-date {
@@ -18,6 +19,38 @@
     text-align: right;
     color: gray;
   }
+
+  /* コメントフォームのスタイル */
+  .form-group {
+      margin-bottom: 15px;
+  }
+
+  /* コメント入力フィールドのスタイル */
+  #id_content {
+    width: 50%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    margin-left: 40px;
+  }
+
+  /* 送信ボタンのスタイル */
+  .custom-submit-btn {
+    background-color: rgb(60, 172, 22);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .custom-submit-btn:hover {
+    background-color: rgb(50, 150, 18);
+  }
+
+  
 </style>
 
 
@@ -27,11 +60,11 @@
    <!-- コメントリストの表示 -->
    <ul>
      {% for comment in comments %}
-       <p><div class="username"> {{ comment.user.username }} </div> 
-          <div class="content-box">{{ comment.content }} 
-             <div class="content-date">{{ comment.created_at }}</div>
-          </div>
-       </p>
+        <div class="username"> {{ comment.user.username }} </div> 
+        <div class="content-box">{{ comment.content }} 
+          <div class="content-date">{{ comment.created_at|date:"Y/m/d H:i" }}</div>
+        </div>
+       
      {% empty %}
        <p>コメントはまだありません</p>
      {% endfor %}
@@ -39,21 +72,23 @@
 
    {% if user.is_authenticated %}
      <!-- コメント投稿フォーム -->
-     <h3>Add a comment:</h3>
-     <form method="post">
+       <h3>コメントを入力してください</h3>
+       <form method="post">
        {% csrf_token %}
-       {{ form.as_p }}
-       <button type="submit">Submit</button>
-     </form>
+    
+       <!-- コメントフィールドのカスタマイズ -->
+       <div class="form-group">
+          <label for="id_content"></label>
+          {{ form.content }} <!-- フィールドを手動で追加 -->
+       </div>
 
-     <!-- ログアウトボタン -->
-     <form method="post" action="{% url 'logout' %}">
-       {% csrf_token %}
-       <button type="submit">Logout</button>
-     </form>
+       <!-- ボタンのカスタマイズ -->
+       <button type="submit" class="custom-submit-btn">コメントを送信</button>
+       </form>
+
 
    {% else %}
-     <p>You must be logged in to add a comment.</p>
-     <a href="{% url 'login' %}">Login here</a>
+     <p>コメントを追加するにはログインしてください</p>
+     <a href="{% url 'login' %}">ここからログイン</a>
    {% endif %}
 </body>
