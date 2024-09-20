@@ -130,5 +130,5 @@ STATICFILES_DIRS = [
 ]
 
 LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/comments/'
-LOGOUT_REDIRECT_URL = '/comments/'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'

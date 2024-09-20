@@ -4,6 +4,7 @@ from .forms import CommentForm
 
 from .forms import SignUpForm
 from django.contrib.auth import login
+from django.contrib.auth.views import LoginView
 
 def home(request):
     return render(request, 'home.html')
@@ -72,7 +73,18 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)  # 登録後すぐにログインさせる場合
-            return redirect('comment_list')  # 成功後のリダイレクト先
+            return redirect('home')  # 成功後のリダイレクト先
     else:
         form = SignUpForm()
     return render(request, 'registration/signup.html', {'form': form})
+
+
+class CustomLoginView(LoginView):
+    template_name = 'registration/login.html'
+
+    # フォームが無効な場合の処理
+    def form_invalid(self, form):
+        # 独自のエラーメッセージを追加
+        form.errors.clear()
+        form.add_error(None, "ユーザー名またはパスワードが正しくありません　　もう一度入力してください")
+        return super().form_invalid(form)

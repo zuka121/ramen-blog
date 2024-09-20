@@ -1,10 +1,50 @@
-<!-- templates/registration/login.html -->
-<h2>Login</h2>
+<!DOCTYPE html>
+<html lang="ja">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログイン</title>
+    <link rel="stylesheet" href="{% static 'mypage/css/login.css' %}">
+</head>
+<body>
+    <div class="login-container">
+        <div class="center"><a href="{% url 'home' %}"><img src="{% static 'mypage/logo.png' %}" alt="ロゴ" class="menu-logo"></a></div>
+        <h2>ログイン</h2>
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-</form>
+        <!-- エラーメッセージの表示 -->
+        {% if form.non_field_errors %}
+            <div class="error-message">
+                {{ form.non_field_errors|first }}
+            </div>
+        {% endif %}
 
-<p>Not a member? <a href="{% url 'signup' %}">Sign up here</a>.</p>
+        <form method="post">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="id_username">ユーザー名</label>
+                {{ form.username }}
+                {% if form.username.errors %}
+                    <div class="error">{{ form.username.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="id_password">パスワード</label>
+                {{ form.password }}
+                {% if form.password.errors %}
+                    <div class="error">{{ form.password.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="container1">
+                <button type="submit">ログイン</button>
+                <!-- 前のページに戻るボタン -->
+                <div onclick="history.back()" class="back-button">前のページに戻る</div>
+                </div>
+        </form>
+    </div>
+    <div class="container2"><p>アカウントを持っていませんか? <a href="{% url 'signup' %}">ここからユーザー登録</a></p></div>
+</body>
+</html>
