@@ -127,6 +127,58 @@
         opacity: 1;
     }
 
+    .username1 {
+          font-size: 15px;
+          color: rgb(60, 172, 22);
+          font-weight: bold;
+          margin-top: 10px;
+        }
+  
+   .content-box {
+     width: 50%;
+     border: solid 1.5px gray;
+     border-radius: 5px;
+     padding: 5px;
+     margin: 0px;
+    }
+  
+    .content-date {
+        font-size: 13px;
+        text-align: right;
+        color: gray;
+    }
+
+    /* コメントフォームのスタイル */
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    /* コメント入力フィールドのスタイル */
+    #id_content {
+        width: 50%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        margin-left: 40px;
+    }
+
+    /* 送信ボタンのスタイル */
+    .custom-submit-btn {
+        background-color: rgb(60, 172, 22);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    .custom-submit-btn:hover {
+      background-color: rgb(50, 150, 18);
+    }
+
+
 </style>
 
 <body>
@@ -185,7 +237,44 @@
           </div>
       </div>
     </div>
-    
+
+
+    <h2>Comments</h2>
+
+    <!-- コメントリストの表示 -->
+    <ul>
+      {% for comment in comments %}
+         <div class="username1"> {{ comment.user.username }} </div> 
+         <div class="content-box">{{ comment.content }} 
+           <div class="content-date">{{ comment.created_at|date:"Y/m/d H:i" }}</div>
+         </div>
+        
+      {% empty %}
+        <p>コメントはまだありません</p>
+      {% endfor %}
+    </ul>
+ 
+    {% if user.is_authenticated %}
+      <!-- コメント投稿フォーム -->
+        <h3>コメントを入力してください</h3>
+        <form method="post">
+        {% csrf_token %}
+     
+        <!-- コメントフィールドのカスタマイズ -->
+        <div class="form-group">
+           <label for="id_content"></label>
+           {{ form.content }} <!-- フィールドを手動で追加 -->
+        </div>
+ 
+        <!-- ボタンのカスタマイズ -->
+        <button type="submit" class="custom-submit-btn">コメントを送信</button>
+        </form>
+ 
+ 
+    {% else %}
+      <p>コメントを追加するにはログインしてください</p>
+      <a href="{% url 'login' %}">ここからログイン</a>
+    {% endif %}
 
     <script>
         // メイン画像とサムネイルの要素を取得

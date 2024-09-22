@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Comment
+from .models import Comment, Store
 from .forms import CommentForm
 
 from .forms import SignUpForm
@@ -88,3 +88,28 @@ class CustomLoginView(LoginView):
         form.errors.clear()
         form.add_error(None, "ユーザー名またはパスワードが正しくありません　　もう一度入力してください")
         return super().form_invalid(form)
+    
+
+def store_detail(request, store_id):
+    store = get_object_or_404(Store, id=store_id)
+    comments = store.comments.all()
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user = request.user
+            comment.store = store
+            comment.save()
+            return redirect('store_detail', store_id=store.id)
+    else:
+        form = CommentForm()
+
+    context = {
+        'store': store,
+        'comments': comments,
+        'form': form,
+    }
+    if store_id == 1:
+        return render(request, 'shimasyo.html', context)
+    
