@@ -1,0 +1,1 @@
+web: gunicorn ramen_page.wsgi
