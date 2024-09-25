@@ -62,8 +62,6 @@
             width: 140px;
             margin: 15px auto;
             display: block;
-            cursor: pointer;
-            text-align: left;
         }
 
         .menu-toggle {
@@ -113,14 +111,6 @@
                 display: block; /* トグルで表示 */
             }
 
-            .menu-logo {
-                display: none; /* デフォルトで非表示 */
-            }
-
-            .menu-logo.active {
-                display: block; /* メニューが表示されたときに表示 */
-            }
-
             .menu-toggle {
                 display: inline-block; /* ボタンを表示 */
             }
@@ -132,10 +122,10 @@
 
     <div class="layout-container">
         <div>
-            <button class="menu-toggle" id="menu-toggle">メニュー</button> <!-- メニューボタンを追加 -->
             <a href="{% url 'home' %}">
-              <img src="{% static 'mypage/logo.png' %}" alt="ロゴ" class="menu-logo" id="logo">
+              <img src="{% static 'mypage/logo.png' %}" alt="ロゴ" class="menu-logo"> <!-- ロゴは常に表示 -->
             </a>
+            <button class="menu-toggle" id="menu-toggle">メニュー</button> <!-- メニューボタン -->
             <nav class="menu-container" id="menu">
                 <ul class="menu">
                     {% if user.is_authenticated %}
@@ -170,11 +160,18 @@
     </div>
 
     <script>
-        // メニュートグルの機能を追加
-        document.getElementById('menu-toggle').addEventListener('click', function() {
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
             const menu = document.getElementById('menu');
-            menu.classList.toggle('active');
-            document.getElementById('logo').classList.toggle('active'); // ロゴもトグル
+            
+            if (!menuToggle || !menu) {
+                console.error("メニューボタンまたはメニューコンテナが見つかりません");
+                return;
+            }
+
+            menuToggle.addEventListener('click', function() {
+                menu.classList.toggle('active');
+            });
         });
     </script>
 </body>
