@@ -62,7 +62,19 @@
             width: 140px;
             margin: 15px auto;
             display: block;
+            cursor: pointer;
+        }
+
+        .menu-toggle {
+            display: none; /* デフォルトは非表示 */
             cursor: pointer; /* カーソルをポインターに */
+            font-size: 20px; /* ボタンのフォントサイズ */
+            background-color: rgb(123, 208, 95);
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin: 10px; /* ボタンの周囲に余白を追加 */
         }
 
         .greet {
@@ -107,6 +119,10 @@
             .menu-logo.active {
                 display: block; /* メニューが表示されたときに表示 */
             }
+
+            .menu-toggle {
+                display: inline-block; /* ボタンを表示 */
+            }
         }
     </style>
 </head>
@@ -115,7 +131,8 @@
 
     <div class="layout-container">
         <div>
-            <img src="{% static 'mypage/logo.png' %}" alt="ロゴ" class="menu-logo" id="menu-toggle">
+            <button class="menu-toggle" id="menu-toggle">メニュー</button> <!-- メニューボタンを追加 -->
+            <img src="{% static 'mypage/logo.png' %}" alt="ロゴ" class="menu-logo" id="logo">
             <nav class="menu-container" id="menu">
                 <ul class="menu">
                     {% if user.is_authenticated %}
@@ -154,7 +171,7 @@
         document.getElementById('menu-toggle').addEventListener('click', function() {
             const menu = document.getElementById('menu');
             menu.classList.toggle('active');
-            this.classList.toggle('active'); // ロゴもトグル
+            document.getElementById('logo').classList.toggle('active'); // ロゴもトグル
         });
     </script>
 </body>
