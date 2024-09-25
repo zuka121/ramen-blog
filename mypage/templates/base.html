@@ -63,13 +63,14 @@
             margin: 15px auto;
             display: block;
             cursor: pointer;
+            text-align: left;
         }
 
         .menu-toggle {
             display: none; /* デフォルトは非表示 */
             cursor: pointer; /* カーソルをポインターに */
             font-size: 20px; /* ボタンのフォントサイズ */
-            background-color: rgb(123, 208, 95);
+            background-color: rgb(60, 172, 22);
             color: white;
             padding: 10px;
             border: none;
@@ -132,7 +133,9 @@
     <div class="layout-container">
         <div>
             <button class="menu-toggle" id="menu-toggle">メニュー</button> <!-- メニューボタンを追加 -->
-            <img src="{% static 'mypage/logo.png' %}" alt="ロゴ" class="menu-logo" id="logo">
+            <a href="{% url 'home' %}">
+              <img src="{% static 'mypage/logo.png' %}" alt="ロゴ" class="menu-logo" id="logo">
+            </a>
             <nav class="menu-container" id="menu">
                 <ul class="menu">
                     {% if user.is_authenticated %}
