@@ -10,6 +10,10 @@
           padding: 0px;
           margin: 4px;
         }
+      
+      a{
+        margin: 0 4px;
+      }
 
       h2{
           margin: 0px 10px;
@@ -32,6 +36,10 @@
           font-size: 16px;
           color: gray;
         }
+      
+      .margin{
+        margin: 5px 10px;
+      }
 
       .emphasize {
           border-left:solid 5px rgb(60, 172, 22);
@@ -327,8 +335,10 @@
  
  
      {% else %}
-         <p>コメントを追加するにはログインしてください</p>
-         <a href="{% url 'login' %}">ここからログイン</a>
+         <div class="margin">
+           <p>コメントを追加するにはログインしてください</p>
+           <a href="{% url 'login' %}">ここからログイン</a>
+         </div>  
      {% endif %}
 
      <script>
