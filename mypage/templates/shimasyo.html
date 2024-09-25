@@ -15,6 +15,10 @@
         margin: 0px;
     }
 
+    ul{
+        padding-left: 0px;
+    }
+
     .date{
         font-size: 16px;
         color: gray;
@@ -28,14 +32,14 @@
     }
 
     .title{
+        display: inline-block;
         background-color: rgb(220, 160, 30);
         font-weight: bold;
         color: white;
-        padding: 0.5px 10px 0.5px 10px;
+        padding: 0.5px 8px ;
         border-radius: 20px;
-        margin:10px 147px 10px 0px;
         text-align: center;
-        
+        margin:2% 0px;
     }
 
     .layout-container{
@@ -67,10 +71,11 @@
 
     .content-container1 img{
         width: 40%;
-        margin: auto;
+        margin: auto ;
     }
     .content-container2{
         justify-content: left;
+        margin: auto;
     }
 
     .content-container3{
@@ -158,7 +163,7 @@
         border-radius: 5px;
         border: 1px solid #ccc;
         font-size: 14px;
-        margin-left: 40px;
+        margin-left: 0px;
     }
 
     /* 送信ボタンのスタイル */
@@ -262,17 +267,11 @@
          <div class="content-container1">
              <img src="{% static 'mypage/shimasyo_point.png' %}" alt="しま彰地図">
              <div class="content-container2">
-                  <div class="title">
-                     場所
-                  </div>
-                  <p> 和歌山県紀の川市貴志川町長原</p>
-                  <div class="title">
-                     営業時間
-                  </div>
+                  <p><span class="title">場所</span></p>                  
+                  <p>紀の川市貴志川町長原</p>
+                  <p><span class="title">営業時間</span></p>
                   <p> 11:00 ~ 13:15</p>
-                  <div class="title">
-                     定休日               
-                  </div>
+                  <p><span class="title">定休日</span></p>
                   <p>　火</p>
              </div>
           </div>
