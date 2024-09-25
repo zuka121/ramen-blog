@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}ページのタイトル{% endblock %}</title>
     <style>
         body {
@@ -62,6 +62,7 @@
             width: 140px;
             margin: 15px auto;
             display: block;
+            cursor: pointer; /* カーソルをポインターに */
         }
 
         .greet {
@@ -82,7 +83,6 @@
             border-radius: 4px;
             border: solid 1.5px gray;
             padding: 5px;
-            color: #f4f4f4;
         }
 
         button:hover {
@@ -90,48 +90,44 @@
             color: white;
         }
 
-        /* メニューボタンのスタイル */
-        .menu-toggle {
-            display: none;
-            font-size: 16px;
-            padding: 10px;
-            margin: 10px;
-            border: none;
-            background-color: rgb(60, 172, 22);
-            color: white;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
+        /* メニュー非表示のスタイル */
         @media (max-width: 768px) {
             .menu-container {
-                display: none; /* メニューを非表示 */
+                display: none; /* デフォルトで非表示 */
             }
 
-            .menu-toggle {
-                display: block; /* メニューボタンを表示 */
+            .menu-container.active {
+                display: block; /* トグルで表示 */
+            }
+
+            .menu-logo {
+                display: none; /* デフォルトで非表示 */
+            }
+
+            .menu-logo.active {
+                display: block; /* メニューが表示されたときに表示 */
             }
         }
     </style>
 </head>
 <body>
     {% load static %}
+
     <div class="layout-container">
         <div>
-            <a href="{% url 'home' %}"><img src="{% static 'mypage/logo.png' %}" alt="ロゴ" class="menu-logo"></a>
-            <button class="menu-toggle">メニュー</button>
-            <nav class="menu-container">
+            <img src="{% static 'mypage/logo.png' %}" alt="ロゴ" class="menu-logo" id="menu-toggle">
+            <nav class="menu-container" id="menu">
                 <ul class="menu">
                     {% if user.is_authenticated %}
-                       <div class="greet">ようこそ!　　　　　　　　　　　　　　　　　　　　　 
-                       <div class="username">{{ user.username }}</div>さん
-                       </div>
-                       <form method="POST" action="{% url 'logout' %}">
-                        {% csrf_token %}
-                        <button type="submit">ログアウト</button>
-                    </form>
+                        <div class="greet">ようこそ!
+                        <div class="username">{{ user.username }}</div>さん
+                        </div>
+                        <form method="POST" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="submit">ログアウト</button>
+                        </form>
                     {% else %}
-                       <li class="menu-item"><a href="{% url 'login' %}">ログイン</a></li>
+                        <li class="menu-item"><a href="{% url 'login' %}">ログイン</a></li>
                     {% endif %}
                     <li class="menu-item"><a href="{% url 'home' %}">ホーム</a></li>
                     <li class="menu-item"><a href="{% url 'hokkaido' %}">北海道</a></li>
@@ -154,17 +150,11 @@
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const menuContainer = document.querySelector('.menu-container');
-
-            menuToggle.addEventListener('click', function() {
-                if (menuContainer.style.display === 'none' || menuContainer.style.display === '') {
-                    menuContainer.style.display = 'block'; // メニューを表示
-                } else {
-                    menuContainer.style.display = 'none'; // メニューを非表示
-                }
-            });
+        // メニュートグルの機能を追加
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('active');
+            this.classList.toggle('active'); // ロゴもトグル
         });
     </script>
 </body>
