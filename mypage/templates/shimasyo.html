@@ -12,9 +12,6 @@
           margin: 4px;
         }
       
-      a{
-        margin: 0 4px;
-      }
 
       h2{
           margin: 0px 10px;
@@ -24,28 +21,30 @@
         margin: 15px 10px;
       }
 
-      h1{
-        margin: 0px ;
-        }  
+        
 
       ul{
           padding-left: 0px;
           margin: 0px 10px;
         }
 
+      
       .date{
           font-size: 16px;
           color: gray;
         }
       
       .margin{
-        margin: 5px 10px;
+        margin: 15px;
+      }
+
+      .margin1{
+        margin:0px 4px;
       }
 
       .emphasize {
           border-left:solid 5px rgb(60, 172, 22);
           padding:0px 8px;
-          margin: 0px 10px;
         }
 
       .title{
@@ -59,11 +58,11 @@
           margin:2% 0px;
         }
 
-      .layout-container{
+      .layout-container1{
           display: flex;
           justify-content: center;
-          margin-top: 10px;
           width: 1000px; /* 固定幅を維持 */
+          margin-bottom: 15px;
         }
 
       .image-container{
@@ -84,7 +83,7 @@
           background-color: #f4f4f4;
           padding-top: 10px;
           padding-right: 10px;
-          margin: 50px 0px 10px 0px;
+          margin: 60px 0px 10px 0px;
         }
 
       .content-container1 img{
@@ -202,7 +201,7 @@
 
      /* モバイル対応メディアクエリ */
      @media (max-width: 768px) {
-         .layout-container {
+         .layout-container1 {
              width: 100%; /* 画面幅にフィットさせる */
             }
 
@@ -229,7 +228,7 @@
 
      /* さらに狭い画面向けのメディアクエリ */
      @media (max-width: 480px) {
-         .layout-container {
+         .layout-container1 {
              flex-direction: column; /* 列方向に変更 */
              width: 100%;
          }
@@ -258,7 +257,7 @@
          <h1>しま彰</h1>
      </div>
 
-     <div class="layout-container">
+     <div class="layout-container1">
          <div class="image-container">
              <h2>W中華そば(2玉)　&yen;800</h2>
               <div class="date">
@@ -339,8 +338,8 @@
      {% else %}
          <div class="margin">
            <p>コメントを追加するにはログインしてください</p>
-           <a href="{% url 'login' %}">ここからログイン</a>
-         </div>  
+           <div class="margin1"><a href="{% url 'login' %}">ここからログイン</a></div>
+         </div>
      {% endif %}
 
      <script>
