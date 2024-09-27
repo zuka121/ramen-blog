@@ -42,6 +42,9 @@ def wakayama(request):
 def shimasyo(request):
     return render(request, 'shimasyo.html')
 
+def home_320(request):
+    return render(request, 'home-320.html')
+
 
 
 def comment_list(request):
