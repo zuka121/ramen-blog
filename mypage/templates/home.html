@@ -137,6 +137,10 @@
        border-radius: 10px; /* 角を少し丸める */
     }
 
+    .block-container1{
+        margin: 0px auto;
+    }
+
     @media (max-width: 768px) {
      .layout-container {
          width: 100%; /* 画面幅にフィットさせる */
@@ -275,6 +279,7 @@
          font-weight: bold;
          border-radius: 10px; /* 角を少し丸める */
         }
+
     }
 
 
@@ -346,24 +351,24 @@
         </div>
     </div>
 
+    <div class="block-container1">
+       <!-- 3つのブロックを横並びに配置 -->
+       <div class="block-container">
+           <div class="block">北海道</div>
+           <div class="block">東北</div>
+           <div class="block">関東</div>
+       </div>
 
-    <!-- 3つのブロックを横並びに配置 -->
-    <div class="block-container">
-        <div class="block">北海道</div>
-        <div class="block">東北</div>
-        <div class="block">関東</div>
-    </div>
+       <div class="block-container">
+           <div class="block">中部</div>
+           <div class="block">近畿</div>
+           <div class="block">中国</div>
+       </div>
 
-    <div class="block-container">
-        <div class="block">中部</div>
-        <div class="block">近畿</div>
-        <div class="block">中国</div>
-    </div>
-
-    <div class="block-container">
-        <div class="block">四国</div>
-        <div class="block">九州</div>
-        
+       <div class="block-container">
+           <div class="block">四国</div>
+           <div class="block">九州</div>
+        </div>
     </div>
     
 {% endblock %}
