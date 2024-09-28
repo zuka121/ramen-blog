@@ -23,62 +23,62 @@
 
 
         /* 各地方の画像をmap-container内に配置 */
-        .hokkaido-image, .touhoku-image, .kanto-image, .tyubu-image, .kinki-image, .tyugoku-image, .shikoku-image, .kyusyu-image {
+        .hokkaido, .touhoku, .kanto, .tyubu, .kinki, .tyugoku, .shikoku, .kyusyu {
             position: absolute;
             z-index: 10; 
         }
 
         /* 北海道の画像 */
-        .hokkaido-image {
+        .hokkaido {
             top: 10px; 
             left: 538.5px;
             width: 20.6%;
         }
 
         /* 東北の地図 */
-        .touhoku-image {
+        .touhoku {
             top: 152.8px;
             left: 493.5px;
             width: 15%;
         }
 
         /* 関東の地図 */
-        .kanto-image {
+        .kanto {
             top: 293.1px;
             left: 510.2px;
             width: 7.3%;
         }
 
         /* 中部の地図 */
-        .tyubu-image {
+        .tyubu {
             top: 249.6px;
             left: 431.2px;
             width: 12.6%;
         }
 
         /* 近畿の地図 */
-        .kinki-image {
+        .kinki {
             top: 338.8px;
             left: 404.2px;
             width: 7.3%;
         }
 
         /* 中国の地図 */
-        .tyugoku-image {
+        .tyugoku {
             top: 308.8px;
             left: 316px;
             width: 9.6%;
         }
 
         /* 四国の地図 */
-        .shikoku-image {
+        .shikoku {
             top: 371.6px;
             left: 351.4px;
             width: 6.6%;
         }
 
         /* 九州の地図 */
-        .kyusyu-image {
+        .kyusyu {
             top: 363.9px;
             left: 226.1px;
             width: 14.4%;
@@ -164,7 +164,7 @@
             position: relative;
             width: 320px;
             height: 350px;
-            margin: 0px;
+            margin: auto;
             border: solid 3px black;
         }
 
@@ -261,13 +261,12 @@
 
         
 
-        /*
+        
         .image-container:hover .text-overlay {
-            display: block;
-            width: 40%;
-            transition: transform 0.5s ease;
+            display: none;
+            
         }
-        */
+        
 
          
         .image-container:hover img {
@@ -316,47 +315,61 @@
     <p>各地方をクリックすれば、それぞれの地方について詳しく知ることができます</p>
     <p>緑で塗られた都道府県には、らーめんの情報があります</p>
 
-    <div class="map-container">    
-        <div class="image-container">
-            <img src="{% static 'mypage/hokkaido_map.png' %}" alt="北海道" class="hokkaido-image">
-            <div class="text-overlay">北海道</div>
+    <div class="emphasize">
+        <h1>日本全国のらーめん</h1>
+    </div>
+
+    <p>各地方をクリックすれば、それぞれの地方について詳しく知ることができます</p>
+    <p>緑で塗られた都道府県には、らーめんの情報があります</p>
+
+    <div class="map-container">   
+    <!--
+        <div class="image-container japan">
+            <img src="{% static 'mypage/japan_map.png' %}" alt="日本" >
+        </div>
+    -->
+        
+        <div class="image-container hokkaido">
+            <img src="{% static 'mypage/hokkaido_map.png' %}" alt="北海道" >
+            
         </div>
 
-        <div class="image-container">
-            <img src="{% static 'mypage/touhoku_map.png' %}" alt="東北" class="touhoku-image">
-            <div class="text-overlay">東北</div>
+        <div class="image-container touhoku">
+            <img src="{% static 'mypage/touhoku_map.png' %}" alt="東北" >
+            
         </div>
 
-        <div class="image-container">
-            <img src="{% static 'mypage/kanto_map.png' %}" alt="関東" class="kanto-image">
-            <div class="text-overlay">関東</div>
+        <div class="image-container kanto">
+            <img src="{% static 'mypage/kanto_map.png' %}" alt="関東" >
+            
         </div>
 
-        <div class="image-container">
-            <img src="{% static 'mypage/tyubu_map.png' %}" alt="中部" class="tyubu-image">
-            <div class="text-overlay">中部</div>
+        <div class="image-container tyubu">
+            <img src="{% static 'mypage/tyubu_map.png' %}" alt="中部">
+            
         </div>
 
-        <div class="image-container">
+        <div class="image-container kinki">
             <a href="{% url 'kinki' %}">
-            <img src="{% static 'mypage/kinki_map.png' %}" alt="近畿" class="kinki-image">
+            <img src="{% static 'mypage/kinki_map.png' %}" alt="近畿" >
             </a>
-            <div class="text-overlay">近畿</div>
+            
         </div>
 
-        <div class="image-container">
-            <img src="{% static 'mypage/tyugoku_map.png' %}" alt="中国" class="tyugoku-image">
-            <div class="text-overlay">中国</div>
+        <div class="image-container tyugoku">
+            <img src="{% static 'mypage/tyugoku_map.png' %}" alt="中国">
+            
         </div>
 
-        <div class="image-container">
-            <img src="{% static 'mypage/shikoku_map.png' %}" alt="四国" class="shikoku-image">
-            <div class="text-overlay">四国</div>
+        <div class="image-container shikoku">
+            <img src="{% static 'mypage/shikoku_map.png' %}" alt="四国">
+           
         </div>
+        
 
-        <div class="image-container">
-            <img src="{% static 'mypage/kyusyu_map.png' %}" alt="九州" class="kyusyu-image">
-            <div class="text-overlay">九州</div>
+        <div class="image-container kyusyu">
+            <img src="{% static 'mypage/kyusyu_map.png' %}" alt="九州">
+            
         </div>
     </div>
 
