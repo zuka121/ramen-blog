@@ -2,14 +2,17 @@
 
 {% block title %}ホーム{% endblock %}
 
+{% load static %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'mypage/css/home.css' %}">
+{% endblock %}
+
 {% block content %}
 
-    {% load static %}
-<head>
-    <link rel="stylesheet" href="{% static 'mypage/css/home.css' %}">
-</head>
 
-  <body>
+
+
 
     <div class="emphasize">
         <h1>日本全国のらーめん</h1>
@@ -20,11 +23,13 @@
     
 
     <div class="map-container">   
+        
         <!--
         <div class="image-container japan">
             <img src="{% static 'mypage/japan_map.png' %}" alt="日本" >
         </div>
         -->
+        
     
         
         <div class="image-container hokkaido">
@@ -90,6 +95,5 @@
         <div class="block">九州</div>
         
     </div>
-  </body>
     
 {% endblock %}
