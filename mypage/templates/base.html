@@ -131,7 +131,7 @@
             <nav class="menu-container" id="menu">
                 <ul class="menu">
                     {% if user.is_authenticated %}
-                        <div class="greet">ようこそ!
+                        <div class="greet">ようこそ!<p></p>
                         <div class="username">{{ user.username }}</div>さん
                         </div>
                         <form method="POST" action="{% url 'logout' %}">
