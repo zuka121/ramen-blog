@@ -45,6 +45,9 @@ def shimasyo(request):
 def home_320(request):
     return render(request, 'home-320.html')
 
+def kinki_320(request):
+    return render(request, 'kinki-320.html')
+
 
 
 def comment_list(request):
