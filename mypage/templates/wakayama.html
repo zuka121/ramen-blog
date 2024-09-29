@@ -58,6 +58,38 @@
         text-align: left;      
     }
 
+    @media (max-width: 480px) {
+        .layout-container {
+          flex-direction: column; /* 列方向に変更 */
+          width: 100%;
+        }
+
+        .block-container {
+           flex-direction: column; /* ブロックを縦並びに */
+           margin-left: 0px; /* 左余白をなくす */
+           gap: 15px; /* 各ブロックの間隔 */
+           margin-top: 20px;
+        }
+
+        .block {
+            width: 90%; /* 幅を100%に近く */
+            margin: 0 auto; /* 中央揃え */
+        }
+
+        .block img {
+            border-radius: 8px;
+        }
+
+        .description {
+            font-size: 12px; /* 文字サイズを縮小 */
+        }
+
+        .description1 {
+            font-size: 11px; /* 文字サイズを縮小 */
+        }
+
+    }
+
 
 
 
