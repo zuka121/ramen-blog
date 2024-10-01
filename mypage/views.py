@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Comment, Store
-from .forms import CommentForm
-
+from .forms import CommentForm, StoreForm
+from django.db.models import Count
 from .forms import SignUpForm
 from django.contrib.auth import login
 from django.contrib.auth.views import LoginView
@@ -37,7 +37,8 @@ def profile(request):
     return render(request, 'profile.html')
 
 def wakayama(request):
-    return render(request, 'wakayama.html')
+    stores = Store.objects.annotate(comment_count=Count('comments'))
+    return render(request, 'wakayama.html', {'stores': stores })
 
 def shimasyo(request):
     return render(request, 'shimasyo.html')
@@ -119,3 +120,15 @@ def store_detail(request, store_id):
     if store_id == 1:
         return render(request, 'shimasyo.html', context)
     
+
+
+def upload_store(request):
+    if request.method == 'POST':
+        form = StoreForm(request.POST, request.FILES)  # 画像ファイルも含める
+        if form.is_valid():
+            form.save()  # データを保存
+            return redirect('store_list')  # アップロード後にリダイレクト
+    else:
+        form = StoreForm()
+    
+    return render(request, 'image_form.html', {'form': form})

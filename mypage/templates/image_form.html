@@ -1,0 +1,5 @@
+<form method="post" enctype="multipart/form-data">  <!-- enctypeが必要 -->
+    {% csrf_token %}
+    {{ form.as_p }}  <!-- フォームフィールドを表示 -->
+    <button type="submit">アップロード</button>
+</form>

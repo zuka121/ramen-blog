@@ -50,12 +50,23 @@
     .description {
        font-size: 16px;
        text-align: left;
-       font-weight: bold;     
+       font-weight: bold;
+       padding: 0px 0px 0px 20px;     
     }
 
-    .description1 {
+    .description1{
+        display: flex;
         font-size: 14px;
-        text-align: left;      
+        justify-content: flex-end;
+        margin: 0px 20px 0px 0px;
+    }
+
+    .description1 img{
+        width: 8%;
+        border-radius: 0px;
+        padding-bottom: 0px;
+        padding-right: 5px;
+        padding-left: 40px;
     }
 
     @media (max-width: 480px) {
@@ -108,6 +119,22 @@
     </div>
     <p>ご当地の和歌山らーめんを中心に伝統的な味と現代の味が楽しめる場所。</p>
     <p>まさに温故知新を体現した素晴らしいらーめんが食べられる県です。</p>
+   
+    <div class="block-container">
+        {% for store in stores %}
+        <a href="{% url 'store_detail' store_id=store.id %}">
+        <div class="block">
+            <img src="{{ store.image.url }}" alt="{{ store.name }}">
+            <div class="description">{{ store.name }}</div>
+            <div class="description1">
+                 {{ store.location }}
+                 <img src="{% static 'mypage/hukidashi.png' %}" alt="コメント画像">{{ store.comment_count }}
+            </div>
+        </div>
+        </a>   
+        {% endfor %} 
+    </div>
+
 
     <div class="block-container">
         <a href="{% url 'store_detail' store_id=1 %}">

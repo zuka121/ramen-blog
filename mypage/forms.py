@@ -1,6 +1,6 @@
 # forms.py
 from django import forms
-from .models import Comment
+from .models import Comment, Store
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 import re
@@ -33,3 +33,10 @@ def clean_username(self):
             raise forms.ValidationError("このユーザー名はすでに使われています。")
         
         return username
+
+
+
+class StoreForm(forms.ModelForm):
+    class Meta:
+        model = Store
+        fields = ['name', 'location', 'image']
