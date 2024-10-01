@@ -37,7 +37,7 @@ def profile(request):
     return render(request, 'profile.html')
 
 def wakayama(request):
-    stores = Store.objects.annotate(comment_count=Count('comments'))
+    stores = Store.objects.filter(prefecture='和歌山').annotate(comment_count=Count('comments'))
     return render(request, 'wakayama.html', {'stores': stores })
 
 def shimasyo(request):

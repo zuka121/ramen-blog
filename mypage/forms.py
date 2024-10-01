@@ -39,4 +39,4 @@ def clean_username(self):
 class StoreForm(forms.ModelForm):
     class Meta:
         model = Store
-        fields = ['name', 'location', 'image']
+        fields = ['name', 'location', 'prefecture', 'image']
