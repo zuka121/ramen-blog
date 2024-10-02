@@ -157,3 +157,8 @@ CLOUDINARY_STORAGE  = {
     'API_KEY': '264789637253265',
     'API_SECRET': 'Np8kOzY8B7k5oWlaL-dcwLkuznA',
 }
+
+
+CORS_ALLOWED_ORIGINS = [
+    "https://ramen-blog-ab983d0e6220.herokuapp.com/",
+]
