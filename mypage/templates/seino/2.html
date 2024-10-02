@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}しま彰{% endblock %}
+{% block title %}和&nbsp;dinig&nbsp;清乃{% endblock %}
 
 {% block content %}
 
@@ -199,8 +199,41 @@
         }
 
      .page-container{
-        display : flex;
-     }  
+         display : flex;
+         font-size: 20px;
+         margin-bottom: 5px;
+        
+      }
+     
+     .page-item{
+          display: inline-block;
+          background-color: rgb(220, 160, 30);
+          color: white;
+          padding: 1px 4px ;
+          border-radius: 20px;
+          text-align: center;
+          margin: 0px 4px;
+     }
+
+     .page-item:hover{
+        color: white;
+        background-color:rgb(183, 182, 182);
+     }
+
+     .page-item1{
+          display: inline-block;
+          background-color: none;
+          color: black;
+          padding: 1px 4px ;
+          border-radius: 20px;
+          text-align: center;
+          margin: 0px 4px;
+     }
+
+     .page-item1:hover{
+        color: white;
+        background-color:rgb(183, 182, 182);
+     }
 
      /* モバイル対応メディアクエリ */
      @media (max-width: 768px) {
@@ -259,7 +292,14 @@
  {% load static %}
  <body>
       <div class="emphasize">
-         <h1>しま彰</h1>
+         <h1>和&nbsp;dinig&nbsp;清乃</h1>
+     </div>
+
+     <div class="page-container">
+
+        <a href="{% url 'seino' page=1 %}"><div class="page-item1">1</div></a>
+        <a href="{% url 'seino' page=2 %}"><div class="page-item">2</div></a>
+
      </div>
 
 
@@ -271,18 +311,16 @@
               </div>
               <!-- メイン画像 -->
              <div class="main-image-container">
-                 <img src="{% static 'mypage/shimasyo1.jpeg' %}" class="active" alt="画像1">
-                 <img src="{% static 'mypage/shimasyo2.jpeg' %}" alt="画像2">
-                 <img src="{% static 'mypage/shimasyo3.jpeg' %}" alt="画像3">
-                 <img src="{% static 'mypage/shimasyo4.jpeg' %}" alt="画像4">
+                 <img src="{% static 'mypage/seino5.jpeg' %}" class="active" alt="画像1">
+                 <img src="{% static 'mypage/seino6.jpeg' %}" alt="画像2">
+                 <img src="{% static 'mypage/seino7.jpeg' %}" alt="画像3">
              </div>
 
              <!-- サムネイル画像のメニュー -->
              <div class="thumbnail-container">
-                 <img src="{% static 'mypage/shimasyo1.jpeg' %}" class="active-thumbnail" alt="画像1のサムネイル" data-index="0">
-                 <img src="{% static 'mypage/shimasyo2.jpeg' %}" alt="画像2のサムネイル" data-index="1">
-                 <img src="{% static 'mypage/shimasyo3.jpeg' %}" alt="画像3のサムネイル" data-index="2">
-                 <img src="{% static 'mypage/shimasyo4.jpeg' %}" alt="画像4のサムネイル" data-index="3">
+                 <img src="{% static 'mypage/seino5.jpeg' %}" class="active-thumbnail" alt="画像1のサムネイル" data-index="0">
+                 <img src="{% static 'mypage/seino6.jpeg' %}" alt="画像2のサムネイル" data-index="1">
+                 <img src="{% static 'mypage/seino7.jpeg' %}" alt="画像3のサムネイル" data-index="2">
              </div>
          </div>
 

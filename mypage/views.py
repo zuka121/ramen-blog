@@ -99,6 +99,29 @@ class CustomLoginView(LoginView):
 
 def store_detail(request, store_id):
     store = get_object_or_404(Store, id=store_id)
+    
+    if store_id == 1:
+        return redirect('shimasyo', page=1)
+    if store_id == 2:
+        return redirect('seino', page=1)
+    
+
+
+def upload_store(request):
+    if request.method == 'POST':
+        form = StoreForm(request.POST, request.FILES)  # 画像ファイルも含める
+        if form.is_valid():
+            form.save()  # データを保存
+            return redirect('store_list')  # アップロード後にリダイレクト
+    else:
+        form = StoreForm()
+    
+    return render(request, 'image_form.html', {'form': form})
+
+
+
+def shimasyo(request, page):
+    store = get_object_or_404(Store, id=1)
     comments = store.comments.all()
 
     if request.method == 'POST':
@@ -117,18 +140,30 @@ def store_detail(request, store_id):
         'comments': comments,
         'form': form,
     }
-    if store_id == 1:
+    if page == 1:
         return render(request, 'shimasyo.html', context)
     
+def seino(request, page):
+    store = get_object_or_404(Store, id=2)
+    comments = store.comments.all()
 
-
-def upload_store(request):
     if request.method == 'POST':
-        form = StoreForm(request.POST, request.FILES)  # 画像ファイルも含める
+        form = CommentForm(request.POST)
         if form.is_valid():
-            form.save()  # データを保存
-            return redirect('store_list')  # アップロード後にリダイレクト
+            comment = form.save(commit=False)
+            comment.user = request.user
+            comment.store = store
+            comment.save()
+            return redirect('store_detail', store_id=store.id)
     else:
-        form = StoreForm()
-    
-    return render(request, 'image_form.html', {'form': form})
+        form = CommentForm()
+
+    context = {
+        'store': store,
+        'comments': comments,
+        'form': form,
+    }
+    if page == 1:
+        return render(request, 'seino/1.html', context)
+    if page == 2:
+        return render(request, 'seino/2.html', context)

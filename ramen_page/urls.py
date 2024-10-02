@@ -35,7 +35,6 @@ urlpatterns = [
     path('kyusyu/', views.kyusyu, name='kyusyu'),
     path('profile', views.profile, name='profile'),
     path('wakayama/', views.wakayama, name='wakayama'),
-    path('shimasyo/', views.shimasyo, name='shimasyo'),
 
 
     path('comments/', views.comment_list, name='comment_list'),
@@ -44,5 +43,9 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'), 
     path('store/<int:store_id>/', views.store_detail, name='store_detail'),
     path('image_form/', views.upload_store, name='image_upload'),
+
+    path('shimasyo/<int:page>/', views.shimasyo, name='shimasyo'),
+    path('seino/<int:page>/', views.seino, name='seino'),
+
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
