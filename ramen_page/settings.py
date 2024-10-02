@@ -38,12 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'mypage',
-    'cloudinary_storage',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
     'cloudinary',
 ]
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -142,13 +141,14 @@ LOGOUT_REDIRECT_URL = 'home'
 
 
 MEDIA_URL = '/media/'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 
 
 CLOUDINARY_STORAGE  = {
     'CLOUD_NAME': 'ho732y82f',
-    'API_KEY':'264789637253265',
+    'API_KEY': '264789637253265',
     'API_SECRET': 'Np8kOzY8B7k5oWlaL-dcwLkuznA',
     'SECURE': True, 
 }
