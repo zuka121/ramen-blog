@@ -141,14 +141,14 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 
-'''MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')'''
+MEDIA_URL = '/media/'
 
 
 
 
 CLOUDINARY_STORAGE  = {
-    'CLOUD_NAME':'ho732y82f',
-    'API_KEY':'264789637253265',
-    'API_SECRET':'Np8kOzY8B7k5oWlaL-dcwLkuznA'
+    'CLOUD_NAME':os.getenv('ho732y82f'),
+    'API_KEY':os.getenv('264789637253265'),
+    'API_SECRET':os.getenv('Np8kOzY8B7k5oWlaL-dcwLkuznA'),
+    'SECURE': True, 
 }
