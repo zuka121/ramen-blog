@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+
+{% block title %}和歌山{% endblock %}
+
+{% block content %}
+
+<style>
+    .emphasize {
+        border-left:solid 5px rgb(60, 172, 22);
+        padding:0px 8px;
+    }
+
+    p {
+        line-height: 1;
+    }
+
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    a:hover{
+        opacity: 0.7;
+    }
+
+    .block-container {
+       display: flex;
+       flex-wrap: wrap;
+       justify-content: left;
+       gap: 20px;
+       margin-top: 50px;
+       margin-left: 50px;
+    }
+
+    .block {
+       width: 250px;
+       background-color: #f4f4f4;
+       border: 2px solid gray;
+       display: flex;
+       flex-direction: column;
+       justify-content: flex-start;
+       padding: 0px 0px 10px 0px;
+       border-radius: 10px;
+    }
+
+    .block img {
+       width: 100%;
+       margin:0px 0px 15px 0px;
+       border-radius: 8px;
+    }
+
+    .description {
+       font-size: 16px;
+       text-align: left;
+       font-weight: bold;
+       padding: 0px 0px 0px 20px;     
+    }
+
+    .description1{
+        display: flex;
+        font-size: 14px;
+        margin: 0px 10px 0px 20px;
+    }
+
+    .description1 img{
+        width: 8%;
+        border-radius: 0px;
+        padding-bottom: 0px;
+        margin: auto 5px auto auto;
+    }
+
+    @media (max-width: 480px) {
+        .layout-container {
+          flex-direction: column; /* 列方向に変更 */
+          width: 100%;
+        }
+
+        p{
+            line-height: 1.5;
+            margin: 4px;
+        }
+
+        .block-container {
+           flex-direction: column; /* ブロックを縦並びに */
+           margin-left: 0px; /* 左余白をなくす */
+           gap: 15px; /* 各ブロックの間隔 */
+           margin-top: 20px;
+        }
+
+        .block {
+            width: 90%; /* 幅を100%に近く */
+            margin: 0 auto; /* 中央揃え */
+        }
+
+        .block img {
+            border-radius: 8px;
+        }
+
+        .description {
+            font-size: 14px; /* 文字サイズを縮小 */
+        }
+
+        .description1 {
+            font-size: 13px; /* 文字サイズを縮小 */
+        }
+        
+        .description1 img{
+            width: 8%;
+            border-radius: 0px;
+        }
+
+    }
+
+
+
+
+</style>
+
+
+<body>
+    {% load static %}
+    <div class="emphasize">
+    <h1>和歌山</h1>
+    </div>
+    <p>ご当地の和歌山らーめんを中心に伝統的な味と現代の味が楽しめる場所。</p>
+    <p>まさに温故知新を体現した素晴らしいらーめんが食べられる県です。</p>
+   
+    <div class="block-container">
+        {% for store in stores %}
+        <a href="{% url 'store_detail' store_id=store.id %}">
+        <div class="block">
+            <img src="{{ store.image.url }}" alt="{{ store.name }}">
+            <div class="description">{{ store.name }}</div>
+            <div class="description1">
+                 {{ store.location }}
+                 <img src="{% static 'mypage/hukidashi.png' %}" alt="コメント画像">{{ store.comment_count }}
+            </div>
+        </div>
+        </a>   
+        {% endfor %} 
+    </div>
+
+</body>
+
+{% endblock %}

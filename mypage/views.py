@@ -40,8 +40,9 @@ def wakayama(request):
     stores = Store.objects.filter(prefecture='和歌山').annotate(comment_count=Count('comments'))
     return render(request, 'wakayama.html', {'stores': stores })
 
-def shimasyo(request):
-    return render(request, 'shimasyo.html')
+def osaka(request):
+    stores = Store.objects.filter(prefecture='大阪').annotate(comment_count=Count('comments'))
+    return render(request, 'osaka.html', {'stores': stores })
 
 def home_320(request):
     return render(request, 'home-320.html')
@@ -104,6 +105,8 @@ def store_detail(request, store_id):
         return redirect('shimasyo', page=1)
     if store_id == 2:
         return redirect('seino', page=1)
+    if store_id == 3:
+        return redirect('ramenhayato', page=1)
     
 
 
@@ -167,3 +170,31 @@ def seino(request, page):
         return render(request, 'seino/1.html', context)
     if page == 2:
         return render(request, 'seino/2.html', context)
+    
+
+def ramenhayato(request, page):
+    store = get_object_or_404(Store, id=3)
+    comments = store.comments.all()
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user = request.user
+            comment.store = store
+            comment.save()
+            return redirect('store_detail', store_id=store.id)
+    else:
+        form = CommentForm()
+
+    context = {
+        'store': store,
+        'comments': comments,
+        'form': form,
+    }
+    if page == 1:
+        return render(request, 'ramenhayato/1.html', context)
+    if page == 2:
+        return render(request, 'ramenhayato/2.html', context)
+    if page == 3:
+        return render(request, 'ramenhayato/3.html', context)
