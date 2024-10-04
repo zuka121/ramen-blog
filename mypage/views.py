@@ -109,7 +109,8 @@ def store_detail(request, store_id):
         return redirect('ramenhayato', page=1)
     if store_id == 4:
         return redirect('kadoya', page=1)
-    
+    if store_id == 5:
+        return redirect('fishtons', page=1)
 
 
 def upload_store(request):
@@ -234,3 +235,35 @@ def kadoya(request, page):
         return render(request, 'kadoya/kadoya5.html', context)
     if page == 6:
         return render(request, 'kadoya/kadoya6.html', context)
+    
+
+def fishtons(request, page):
+    store = get_object_or_404(Store, id=5)
+    comments = store.comments.all()
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user = request.user
+            comment.store = store
+            comment.save()
+            return redirect('store_detail', store_id=store.id)
+    else:
+        form = CommentForm()
+
+    context = {
+        'store': store,
+        'comments': comments,
+        'form': form,
+    }
+    if page == 1:
+        return render(request, 'fishtons/fishtons1.html', context)
+    if page == 2:
+        return render(request, 'fishtons/fishtons2.html', context)
+    if page == 3:
+        return render(request, 'fishtons/fishtons3.html', context)
+    if page == 4:
+        return render(request, 'fishtons/fishtons4.html', context)
+    if page == 5:
+        return render(request, 'fishtons/fishtons5.html', context)
