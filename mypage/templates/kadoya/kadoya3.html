@@ -1,0 +1,420 @@
+{% extends 'base.html' %}
+
+{% block title %}カドヤ食堂&nbsp;総本店{% endblock %}
+
+{% block content %}
+
+  <style>
+          
+      p {
+          line-height: 1.5;
+          padding: 0px;
+          margin: 4px;
+        }
+      
+
+      h2{
+          margin: 0px 10px;
+        }
+
+      h3{
+        margin: 15px 10px;
+      }
+
+      a{
+        text-decoration: none;
+      }
+
+        
+
+      ul{
+          padding-left: 0px;
+          margin: 0px 10px;
+        }
+
+      
+      .date{
+          font-size: 16px;
+          color: gray;
+        }
+      
+      .margin{
+        margin: 15px;
+      }
+
+      .margin1{
+        margin:0px 4px;
+      }
+
+      .emphasize {
+          border-left:solid 5px rgb(60, 172, 22);
+          padding:0px 8px;
+        }
+
+      .title{
+          display: inline-block;
+          background-color: rgb(220, 160, 30);
+          font-weight: bold;
+          color: white;
+          padding: 0.5px 8px ;
+          border-radius: 20px;
+          text-align: center;
+          margin:2% 0px;
+        }
+
+      .layout-container1{
+          display: flex;
+          justify-content: center;
+          width: 1000px; /* 固定幅を維持 */
+          margin-bottom: 15px;
+        }
+
+      .image-container{
+          width: 50%; /* 全体の幅に対する割合 */
+          margin: 0px 10px;
+        }
+
+      .content-container{
+          width: 50%; /* 全体の幅に対する割合 */
+          margin: 0px 10px;
+        }
+
+      .content-container1{
+          display: flex;
+          justify-content: left;
+          border: solid 2px gray;
+          border-radius: 10px;
+          background-color: #f4f4f4;
+          padding-top: 10px;
+          padding-right: 10px;
+          margin: 60px 0px 10px 0px;
+        }
+
+      .content-container1 img{
+          width: 40%;
+          margin: auto ;
+        }
+      .content-container2{
+          justify-content: left;
+          margin: auto;
+        }
+
+      .content-container3{
+         justify-content: left;
+         border: solid 2px gray;
+         border-radius: 10px;
+         background-color: #f4f4f4;
+         margin-top: 10px;
+         padding: 10px;
+        }
+
+      .main-image-container {
+          width: 100%; /* 画像をコンテナにフィットさせる */
+          height: auto;
+          position: relative;
+          margin: auto;
+          border-radius: 10px;
+        }
+
+      .main-image-container img {
+          width: 100%;
+          height: auto;
+          display: none; /* 初期では全て非表示 */
+          border-radius: 10px;
+        }
+
+      .main-image-container img.active {
+          display: block; /* 表示する画像だけをブロック表示 */
+        }
+
+      .thumbnail-container {
+          display: flex;
+          justify-content: center;
+          margin-top: 10px;
+        }
+
+      .thumbnail-container img {
+          width: 100px;
+          height: 75px;
+          margin: 0 5px;
+          cursor: pointer;
+          opacity: 0.6;
+          border-radius: 7px;
+        }
+
+      .thumbnail-container img:hover {
+          opacity: 1;
+        }
+
+      .thumbnail-container img.active-thumbnail {
+          border: solid 3px rgb(60, 172, 22);
+          opacity: 1;
+        }
+
+      .username1 {
+          font-size: 15px;
+          color: rgb(60, 172, 22);
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+      .content-box {
+          width: 100%;
+          border: solid 1.5px gray;
+          border-radius: 5px;
+          padding: 5px;
+          margin: 0px;
+        }
+
+      .content-date {
+          font-size: 13px;
+          text-align: right;
+          color: gray;
+        }
+
+      /* コメントフォームのスタイル */
+      .form-group {
+          margin-bottom: 15px;
+        }
+
+      /* コメント入力フィールドのスタイル */
+      #id_content {
+          width: 90%;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+          font-size: 14px;
+          margin: 5px 10px;
+        }
+
+      /* 送信ボタンのスタイル */
+      .custom-submit-btn {
+         background-color: rgb(60, 172, 22);
+         color: white;
+         padding: 10px 20px;
+         border: none;
+         border-radius: 5px;
+         font-size: 14px;
+         cursor: pointer;
+         margin: 5px 10px;
+        }
+
+     .custom-submit-btn:hover {
+         background-color: rgb(50, 150, 18);
+        }
+
+     .page-container{
+        display : flex;
+        font-size: 20px;
+        margin-bottom: 5px;
+        
+     }  
+     
+     .page-item{
+          display: inline-block;
+          background-color: rgb(220, 160, 30);
+          color: white;
+          padding: 1px 4px ;
+          border-radius: 20px;
+          text-align: center;
+          margin: 0px 4px;
+     }
+
+     .page-item:hover{
+        color: white; 
+        background-color:rgb(183, 182, 182);
+     }
+
+     .page-item1{
+          display: inline-block;
+          background-color: none;
+          color: black;
+          padding: 1px 4px ;
+          border-radius: 20px;
+          text-align: center;
+          margin: 0px 4px;
+     }
+
+     .page-item1:hover{
+        color: white;
+        background-color:rgb(183, 182, 182);
+     }
+
+     /* モバイル対応メディアクエリ */
+     @media (max-width: 768px) {
+         .layout-container1,
+         .layout-container {
+             width: 100%; /* 画面幅にフィットさせる */
+            }
+
+         .image-container,
+         .content-container {
+             width: 48%; /* スマホでは左右に50%ずつの幅を確保 */
+             margin: 10px 1%;
+            }
+
+         .main-image-container {
+             width: 100%;
+             height: auto;
+            }
+
+         .thumbnail-container img {
+             width: 80px; /* サムネイルのサイズを少し縮小 */
+             height: 60px;
+            }
+
+         #id_content {
+             width: 80%; /* 入力フィールドの幅を狭くしてフィット */
+            }
+        }
+
+     /* さらに狭い画面向けのメディアクエリ */
+     @media (max-width: 480px) {
+         .layout-container1,
+         .layout-container {
+             flex-direction: column; /* 列方向に変更 */
+             width: 100%;
+         }
+
+         .image-container,
+         .content-container {
+             width: 100%; /* フル幅に変更 */
+             margin: 0;
+         }
+
+         .thumbnail-container img {
+             width: 60px; /* サムネイルをさらに縮小 */
+             height: 45px;
+         }
+
+         #id_content {
+             width: 90%; /* 入力フィールドをフル幅に */
+             margin-left: 0;
+         }
+     }
+ </style>
+
+ {% load static %}
+ <body>
+      <div class="emphasize">
+         <h1>カドヤ食堂&nbsp;総本店</h1>
+     </div>
+     <a href="{% url 'osaka' %}"><div class="date">
+        大阪メニューへ戻る
+     </div></a>
+
+     <div class="page-container">
+
+        <a href="{% url 'kadoya' page=1 %}"><div class="page-item1">1</div></a>
+        <a href="{% url 'kadoya' page=2 %}"><div class="page-item1">2</div></a>
+        <a href="{% url 'kadoya' page=3 %}"><div class="page-item">3</div></a>
+        <a href="{% url 'kadoya' page=4 %}"><div class="page-item1">4</div></a>
+        <a href="{% url 'kadoya' page=5 %}"><div class="page-item1">5</div></a>
+        <a href="{% url 'kadoya' page=6 %}"><div class="page-item1">6</div></a>
+
+     </div>
+
+
+     <div class="layout-container1">
+         <div class="image-container">
+             <h2>ワンタンめん(塩)　&yen;1750</h2>
+              <div class="date">
+                 2024年10月
+              </div>
+              <!-- メイン画像 -->
+             <div class="main-image-container">
+                 <img src="{% static 'mypage/kadoya/kadoya8.jpeg' %}" class="active" alt="画像1">
+                 <img src="{% static 'mypage/kadoya/kadoya9.jpeg' %}" alt="画像2">
+                 <img src="{% static 'mypage/kadoya/kadoya10.jpeg' %}" alt="画像3">
+             </div>
+
+             <!-- サムネイル画像のメニュー -->
+             <div class="thumbnail-container">
+                 <img src="{% static 'mypage/kadoya/kadoya8.jpeg' %}" class="active-thumbnail" alt="画像1のサムネイル" data-index="0">
+                 <img src="{% static 'mypage/kadoya/kadoya9.jpeg' %}" alt="画像2のサムネイル" data-index="1">
+                 <img src="{% static 'mypage/kadoya/kadoya10.jpeg' %}" alt="画像3のサムネイル" data-index="2">
+             </div>
+         </div>
+
+         <div class="content-container">
+             <div class="content-container1">
+                 <img src="{% static 'mypage/kadoya/kadoya_point.png' %}" alt="カドヤ地図">
+                 <div class="content-container2">
+                  <p><span class="title">場所</span></p>                  
+                  <p>大阪市西区新町</p>
+                  <p><span class="title">営業時間</span></p>
+                  <p> 10:00 ~ 15:00</p>
+                  <p><span class="title">定休日</span></p>
+                  <p>&nbsp;火</p>
+                 </div>
+             </div>
+
+             <div class="content-container3">
+                 <p>北海道出身の店主による素晴らしいらーめんばかりのお店。</p>
+                 <p>濃厚な味噌で動物の深みも感じるスープ。</p>
+                 <p>カドヤ直伝の黒豚チャーシューはジューシーで、ブロック状のチャーシューも絶品。</p>
+                 <p>関西にいるならぜひ一度は食べてみてほしい一杯です。</p>        
+             </div>
+         </div>
+      </div>
+
+
+     <h2>コメント</h2>
+
+     <!-- コメントリストの表示 -->
+     <ul>
+         {% for comment in comments %}
+             <div class="username1"> {{ comment.user.username }} </div> 
+             <div class="content-box">{{ comment.content }} 
+                 <div class="content-date">{{ comment.created_at|date:"Y/m/d H:i" }}</div>
+             </div>
+        
+         {% empty %}
+             <p>コメントはまだありません</p>
+         {% endfor %}
+     </ul>
+ 
+     {% if user.is_authenticated %}
+         <!-- コメント投稿フォーム -->
+         <h3>コメントを入力してください</h3>
+         <form method="post">
+             {% csrf_token %}
+     
+             <!-- コメントフィールドのカスタマイズ -->
+             <div class="form-group">
+                 <label for="id_content"></label>
+                 {{ form.content }} <!-- フィールドを手動で追加 -->
+             </div>
+ 
+             <!-- ボタンのカスタマイズ -->
+             <button type="submit" class="custom-submit-btn">コメントを送信</button>
+         </form>
+ 
+ 
+     {% else %}
+         <div class="margin">
+           <p>コメントを追加するにはログインしてください</p>
+           <div class="margin1"><a href="{% url 'login' %}">ここからログイン</a></div>
+         </div>
+     {% endif %}
+
+     <script>
+        // メイン画像とサムネイルの要素を取得
+        const mainImages = document.querySelectorAll('.main-image-container img');
+        const thumbnails = document.querySelectorAll('.thumbnail-container img');
+
+        thumbnails.forEach((thumbnail, index) => {
+            // サムネイルをクリックした時のイベント
+            thumbnail.addEventListener('click', function() {
+                // 全てのメイン画像とサムネイルのactiveクラスを削除
+                mainImages.forEach(img => img.classList.remove('active'));
+                thumbnails.forEach(thumb => thumb.classList.remove('active-thumbnail'));
+
+                // クリックしたサムネイルに対応するメイン画像を表示
+                mainImages[index].classList.add('active');
+                thumbnail.classList.add('active-thumbnail');
+            });
+        });
+     </script>
+ </body>
+
+{% endblock %}

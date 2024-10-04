@@ -352,10 +352,12 @@
 
       <div class="block-container1">
       <div class="block-container">
-        <div class="block">
-          <img src="{% static 'mypage/ramenhayato1.jpeg' %}">
-          <div class="text-overlay1">大阪</div>
-        </div>
+        <a href="{% url 'osaka' %}">
+          <div class="block">
+            <img src="{% static 'mypage/ramenhayato1.jpeg' %}">
+            <div class="text-overlay1">大阪</div>
+          </div>
+        </a>
         <div class="block">
           <img src="{% static 'mypage/daiichiasahi1.jpeg' %}">
           <div class="text-overlay1">京都</div>

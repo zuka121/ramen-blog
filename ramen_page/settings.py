@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-=bd%!@ohkgqnmcv=th7hgwg^+8+mg8ocymi++rchsq9+d6z#c5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -143,9 +143,9 @@ LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
-MEDIA_URL = "/media/"
+'''MEDIA_URL = "/media/"'''
 
-'''MEDIA_URL = "https://res.cloudinary.com/ho732y82f/"'''
+MEDIA_URL = "https://res.cloudinary.com/ho732y82f/"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 

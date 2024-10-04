@@ -48,6 +48,8 @@ urlpatterns = [
     path('shimasyo/<int:page>/', views.shimasyo, name='shimasyo'),
     path('seino/<int:page>/', views.seino, name='seino'),
     path('ramenhayato/<int:page>/', views.ramenhayato, name='ramenhayato'),
+    path('kadoya/<int:page>/', views.kadoya, name='kadoya'),
+
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
